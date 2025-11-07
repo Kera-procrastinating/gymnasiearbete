@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bmh2373wjoi1e"
+path="res://.godot/imported/Crafting_2_2.png-385ee659fbfb93007a0db2fc29854e2c.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://gymn game/PostApocalypse_AssetPack_v1/UI/Crafting/Crafting_2_2.png"
+dest_files=["res://.godot/imported/Crafting_2_2.png-385ee659fbfb93007a0db2fc29854e2c.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

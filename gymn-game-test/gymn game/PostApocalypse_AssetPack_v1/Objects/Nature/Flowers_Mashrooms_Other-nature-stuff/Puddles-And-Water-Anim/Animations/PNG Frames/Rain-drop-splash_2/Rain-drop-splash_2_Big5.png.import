@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://drn4arm2cp7im"
+path="res://.godot/imported/Rain-drop-splash_2_Big5.png-62824111d6fec1253f58bc5441019305.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://gymn game/PostApocalypse_AssetPack_v1/Objects/Nature/Flowers_Mashrooms_Other-nature-stuff/Puddles-And-Water-Anim/Animations/PNG Frames/Rain-drop-splash_2/Rain-drop-splash_2_Big5.png"
+dest_files=["res://.godot/imported/Rain-drop-splash_2_Big5.png-62824111d6fec1253f58bc5441019305.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

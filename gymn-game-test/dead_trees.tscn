@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv8fy0g7q81de"]
+
+[ext_resource type="Texture2D" uid="uid://c7xlfpbi12wwn" path="res://gymn game/PostApocalypse_AssetPack_v1/Objects/Nature/Flowers_Mashrooms_Other-nature-stuff/Tree_4_Dry_Green.png" id="1_jkn3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h87pw"]
+size = Vector2(21.5, 11.5)
+
+[node name="DeadTrees" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -29)
+scale = Vector2(1.79348, 1.8125)
+texture = ExtResource("1_jkn3y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.25, -8)
+shape = SubResource("RectangleShape2D_h87pw")
