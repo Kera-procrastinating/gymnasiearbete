@@ -1,0 +1,127 @@
+[gd_scene load_steps=17 format=3 uid="uid://d3aun4sr21yqt"]
+
+[ext_resource type="Script" uid="uid://bsxwbitpye5e5" path="res://scripts/austro.gd" id="1_nmlgn"]
+[ext_resource type="Texture2D" uid="uid://b34f8eoj7tmhb" path="res://assets/astronaut/idle_austro_frb.png" id="1_np744"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np744"]
+atlas = ExtResource("1_np744")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmlgn"]
+atlas = ExtResource("1_np744")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulkof"]
+atlas = ExtResource("1_np744")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oydcr"]
+atlas = ExtResource("1_np744")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t5bu"]
+atlas = ExtResource("1_np744")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo512"]
+atlas = ExtResource("1_np744")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq1sd"]
+atlas = ExtResource("1_np744")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p73du"]
+atlas = ExtResource("1_np744")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usfk8"]
+atlas = ExtResource("1_np744")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x20f1"]
+atlas = ExtResource("1_np744")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jchgi"]
+atlas = ExtResource("1_np744")
+region = Rect2(160, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xqtc"]
+atlas = ExtResource("1_np744")
+region = Rect2(240, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulkof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np744")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmlgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oydcr")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t5bu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo512")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq1sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p73du")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usfk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x20f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jchgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xqtc")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nmlgn"]
+radius = 0.5
+height = 13.0
+
+[node name="Astro" type="CharacterBody2D"]
+collision_mask = 254
+script = ExtResource("1_nmlgn")
+
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_ulkof")
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nmlgn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
