@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://be8y5yt6cyek5"]
+
+[ext_resource type="Texture2D" uid="uid://bid0jf0jyo8et" path="res://assets/bits and bobs/spaceship/spaceshipwings.png" id="1_psset"]
+[ext_resource type="Texture2D" uid="uid://nnj3l5scgsdb" path="res://assets/bits and bobs/spaceship/spaceshipbody.png" id="2_jx2rs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ns3nd"]
+
+[node name="SpaceShip" type="Node2D"]
+y_sort_enabled = true
+scale = Vector2(1.00144, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(1, 1.00465)
+collision_layer = 255
+collision_mask = 255
+physics_material_override = SubResource("PhysicsMaterial_ns3nd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-12, 0, -6, -8, 7, -8, 13, 0, 16, 0, 10, -9, -9, -9, -15, 0)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-22, 0, -19, 0, -18, -1, -22, -1)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(23, 0, 20, 0, 19, -1, 23, -1)
+
+[node name="Spaceshipwings" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(18.9728, -2)
+texture = ExtResource("1_psset")
+offset = Vector2(-17.9742, -28)
+
+[node name="Spaceshipbody" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(3.8147e-06, -8)
+texture = ExtResource("2_jx2rs")
+offset = Vector2(0.998566, -22)

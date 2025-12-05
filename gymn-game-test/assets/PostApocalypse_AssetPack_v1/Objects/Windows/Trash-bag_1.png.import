@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d23jbvju7h8eq"
-path="res://.godot/imported/Trash-bag_1.png-27d0f936e01d4a0345b3a9ea344e804b.ctex"
+path="res://.godot/imported/Trash-bag_1.png-413f1ef84fd8670d5b7c4389088933c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PostApocalypse_AssetPack_v1/Objects/Trash-bag_1.png"
-dest_files=["res://.godot/imported/Trash-bag_1.png-27d0f936e01d4a0345b3a9ea344e804b.ctex"]
+source_file="res://assets/PostApocalypse_AssetPack_v1/Objects/Windows/Trash-bag_1.png"
+dest_files=["res://.godot/imported/Trash-bag_1.png-413f1ef84fd8670d5b7c4389088933c9.ctex"]
 
 [params]
 

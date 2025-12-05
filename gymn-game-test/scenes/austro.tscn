@@ -228,7 +228,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 5.0
+"speed": 6.8
 }, {
 "frames": [{
 "duration": 1.0,
@@ -257,7 +257,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 5.0
+"speed": 6.8
 }, {
 "frames": [{
 "duration": 1.0,
@@ -286,7 +286,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 5.0
+"speed": 6.8
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nmlgn"]
@@ -294,13 +294,16 @@ radius = 0.5
 height = 13.0
 
 [node name="Astro" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_mask = 254
 script = ExtResource("1_nmlgn")
+speed = 40
 
 [node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ulkof")
-animation = &"walk_right"
+animation = &"walk_down"
+offset = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
