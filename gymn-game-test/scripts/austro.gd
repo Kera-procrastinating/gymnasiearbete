@@ -5,25 +5,38 @@ class_name Astro
 @export var speed := 55 
 enum{IDLE, WALK}
 
+const DIGGING_RANGE= 18
+
 var state = IDLE
 var direction = Input.get_vector("left", "right", "up", "down")
 var last_moving_dir = Vector2.ZERO
+var is_digging : bool
+
+signal digging
 
 func _ready() -> void:
-	position = Vector2(343,291)
+	position = Vector2(343,288)
 	anim.play("idle_down")
 
-func _physics_process(delta: float) -> void:
+func _physics_process( delta: float) -> void:
+	
+	if is_digging: 
+		if position.distance_to(get_global_mouse_position())< DIGGING_RANGE:
+			digging.emit(get_global_mouse_position())
 	
 	var dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * speed
+	
 	if dir != Vector2.ZERO: #vector.zero faces nowhere when button isn being pressed
-		last_moving_dir = dir
-		_walk_state(dir)
+		last_moving_dir = dir # essentially, if the inputed direction is not nothing, 
+		_walk_state(dir)	#then face the inputed direction and walk...i dont get it..
 	else:
 		_idle_state()
 		
 	move_and_slide()
+
+	
+
 	
 func _idle_state()-> void:
 	if last_moving_dir.x < 0:

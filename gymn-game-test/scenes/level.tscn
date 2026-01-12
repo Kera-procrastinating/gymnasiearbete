@@ -1,13 +1,14 @@
-[gd_scene load_steps=19 format=4 uid="uid://b81u7vg845jjk"]
+[gd_scene load_steps=18 format=4 uid="uid://b81u7vg845jjk"]
 
+[ext_resource type="Script" uid="uid://bpbddp6n38bk4" path="res://scenes/level.gd" id="1_8c41q"]
 [ext_resource type="Texture2D" uid="uid://cfnm1qkmgmj17" path="res://assets/tiles/water.png" id="1_ppgk2"]
 [ext_resource type="Texture2D" uid="uid://cu2uty38vq2ik" path="res://assets/tiles/land.png" id="2_2r41h"]
-[ext_resource type="Texture2D" uid="uid://svecgqh4mdqr" path="res://assets/PostApocalypse_AssetPack_v1/Tiles/Garbage_TileSet.png" id="3_klq6b"]
 [ext_resource type="Texture2D" uid="uid://bosoc55de61e5" path="res://assets/tiles/water_green.png" id="4_2r41h"]
 [ext_resource type="Texture2D" uid="uid://cdk0a3x0nvcoh" path="res://assets/tiles/land_green.png" id="5_klq6b"]
 [ext_resource type="PackedScene" uid="uid://d3aun4sr21yqt" path="res://scenes/austro.tscn" id="5_ppgk2"]
-[ext_resource type="PackedScene" uid="uid://be8y5yt6cyek5" path="res://space_ship.tscn" id="6_klq6b"]
-[ext_resource type="PackedScene" uid="uid://1t1u73pjfla1" path="res://old_environment.tscn" id="7_b121j"]
+[ext_resource type="PackedScene" uid="uid://be8y5yt6cyek5" path="res://scenes/space_ship.tscn" id="6_klq6b"]
+[ext_resource type="PackedScene" uid="uid://c3xuy7bl6qf0e" path="res://scenes/rubbish.tscn" id="7_8c41q"]
+[ext_resource type="PackedScene" uid="uid://1t1u73pjfla1" path="res://scenes/old_environment.tscn" id="7_b121j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("4_2r41h")
@@ -143,74 +144,9 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_n6hdu")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f2txt"]
-texture = ExtResource("3_klq6b")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.985, 4.23863, -5.93966, 8, 8, 8, 8, -0.0101557, -1.01803, -0.0117016, -2.78826, 0.755774, -4.16509, 1.67222, -5.33922, 2.70361)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -0.029438, -8, -0.0269222)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -0.0335197, -8, -0.0335197)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.00640678, -8, 8, 8, 8, 8, -0.00484371)
-4:0/0 = 0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.0175734, -2.98276, -0.0223179, 0.278757, 1.39854, 2.8194, 4.01041, 4.06141, 8, -8, 8)
-5:0/0 = 0
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -3.0294, 3.72818, -2.42825, 0.785023, -0.915409, -1.0854, 0.982517, -2.21315, 3.07299, -3.03833, 5.05343, -3.92925, 8, 8, 8)
-6:0/0 = 0
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3.00373, 8, -2.99251, 8, 8, -8, 8)
-7:0/0 = 0
-7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -3.00656, -3.85562, -2.76778, 0.103657, -0.821191, 2.05025, 1.69127, 3.45946, 4.78751, 3.98958, 8)
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.05131, -8, -6.04092, 8, 8, 8, 8, -8)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 4.01104, 8, 4.03306, -8)
-5:1/0 = 0
-5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.93982, -8, -3.98497, 8, 8, 8, 8, -8)
-6:1/0 = 0
-6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-7:1/0 = 0
-7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 4.0014, -8, 4.01203, 8)
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.95729, -8, -5.95729, 8, 8, 8, 8, -8)
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 4.01734, -8, 3.98422, 8)
-5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.01538, -8, 8, -8, 7.90501, 8, 2.03703, 5.8093, -1.53406, 2.52323, -3.1268, -0.544884, -3.86449, -4.16627)
-6:2/0 = 0
-6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-7:2/0 = 0
-7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 4.01898, -8, 3.66139, -3.54415, 2.93633, -0.335378, 1.79475, 2.79626, -0.503839, 5.07942, -3.31151, 6.28271)
-0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.86714, -8, -5.49921, -0.614805, -3.45965, 3.63912, -1.27442, 5.59127, 2.03342, 8, 8, 8, 8, -8)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, 8, -8, -8, -8)
-4:3/0 = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, -0.872582, 7.45293, 1.81725, 6.03408, 3.43482, 3.84014, 3.9926, 1.18138, 3.99253, -8)
-
-[sub_resource type="TileSet" id="TileSet_1ainy"]
-physics_layer_0/collision_layer = 255
-physics_layer_0/collision_mask = 255
-sources/0 = SubResource("TileSetAtlasSource_f2txt")
-
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_8c41q")
 
 [node name="LargeFlatArea" type="Node2D" parent="."]
 
@@ -239,12 +175,7 @@ tile_set = SubResource("TileSet_km5ld")
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="RubbishPiles" type="TileMapLayer" parent="Environment"]
-light_mask = 2
-visibility_layer = 512
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAeAB0AAAAAAAMAAAAgAB0AAAAGAAEAAAAhAB0AAAABAAEAAAAiAB0AAAAEAAMAAAAeABwAAAAAAAIAAAAfABwAAAABAAIAAAAgABwAAAACAAIAAAAhABwAAAADAAIAAAAiABwAAAAEAAIAAAAeABsAAAAAAAEAAAAfABsAAAABAAEAAAAgABsAAAACAAEAAAAhABsAAAADAAEAAAAiABsAAAAEAAEAAAAiABoAAAAEAAAAAAAhABoAAAADAAAAAAAgABoAAAACAAAAAAAfABoAAAABAAAAAAAeABoAAAAAAAAAAAAPABEAAAAAAAIAAAAPABIAAAAEAAEAABAPABMAAAAAAAIAAAAPABQAAAAAAAMAAAAQABAAAAABAAIAAAAQABEAAAACAAEAAAAQABIAAAACAAIAAAAQABMAAAADAAIAAAAQABQAAAABAAIAABAQABUAAAAEAAMAABARABAAAAABAAEAAAARABEAAAACAAEAADARABIAAAAGAAEAAAARABMAAAACAAEAAAARABQAAAABAAEAAAARABUAAAABAAEAAAARABYAAAAEAAAAADASAA8AAAAGAAEAAAASABAAAAAEAAIAAAASABEAAAAEAAEAAAASABIAAAAEAAIAAAASABMAAAADAAEAAGASABQAAAABAAEAAAASABUAAAABAAIAAAASABYAAAADAAEAAAASABcAAAAAAAAAACATAA8AAAAHAAIAAAATABUAAAACAAEAAAATABYAAAABAAIAABATABcAAAABAAMAAAAUABYAAAABAAEAABAUABcAAAACAAMAAAAVABYAAAABAAIAAAAVABcAAAADAAMAAAAWABcAAAAEAAMAAAAPAA8AAAAFAAEAAAAPABAAAAAAAAEAAAAQAA4AAAAFAAAAAAAQAA8AAAABAAEAAAARAA4AAAAGAAAAAAARAA8AAAABAAEAAAASAA0AAAAAAAAAAAASAA4AAAACAAEAAGATAA0AAAABAAAAAAATAA4AAAABAAEAAAATABMAAAAEAAAAAAATABQAAAABAAEAAAAUAA0AAAACAAAAAAAUAA4AAAABAAMAAAAUABQAAAADAAAAAAAUABUAAAAGAAEAADAVAA0AAAAEAAAAAAAVAA4AAAACAAMAAAAVABQAAAAEAAAAAAAVABUAAAADAAEAAAAWAA4AAAAHAAAAAAAWABUAAAAGAAAAAAAWABYAAAABAAEAAAAXABUAAAAHAAAAAAAXABYAAAAHAAIAAAAdABMAAAAAAAAAAAAdABQAAAAAAAIAAAAdABUAAAAFAAIAAAAeABEAAAAAAAAAAAAeABIAAAAAAAIAAAAeABMAAAABAAEAAAAeABQAAAABAAIAAAAeABUAAAABAAMAAAAfABAAAAAFAAAAAAAfABEAAAABAAEAAAAfABIAAAABAAIAAAAfABMAAAACAAEAAAAfABQAAAAGAAEAAAAfABUAAAACAAMAAAAgABAAAAACAAAAAAAgABEAAAACAAEAAAAgABIAAAACAAIAAAAgABMAAAAGAAEAAAAhABEAAAAGAAEAAAAhABIAAAABAAEAAAAiABEAAAADAAAAAAAiABIAAAAGAAIAAAAgABQAAAAEAAIAAAAgABUAAAAEAAMAAAAhABAAAAAEAAAAAAAhABMAAAAHAAIAAAAjABEAAAAEAAAAAAAjABIAAAAHAAIAAAAqAA8AAAAFAAAAAAAqABAAAAAFAAEAAAAqABEAAAAFAAIAAAArAA8AAAAGAAAAAAArABAAAAAGAAEAAAArABEAAAAGAAIAAAAsAA8AAAAHAAAAAAAsABAAAAAHAAEAAAAsABEAAAAHAAIAAAAfAB0AAAADAAIAAAAfAB4AAAABAAMAAAAgAB4AAAACAAMAAAAhAB4AAAAEAAMAAAAeAB4AAAAFAAIAAAA=")
-tile_set = SubResource("TileSet_1ainy")
+[node name="Rubbish" parent="Environment" instance=ExtResource("7_8c41q")]
 
 [node name="SpaceShip" parent="Environment" instance=ExtResource("6_klq6b")]
 position = Vector2(342, 296)
@@ -260,3 +191,5 @@ metadata/_edit_lock_ = true
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(12, 12)
 position_smoothing_enabled = true
+
+[connection signal="digging" from="Player" to="." method="_on_player_digging"]
