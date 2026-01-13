@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://d3aun4sr21yqt"]
+[gd_scene load_steps=42 format=3 uid="uid://d3aun4sr21yqt"]
 
 [ext_resource type="Script" uid="uid://bsxwbitpye5e5" path="res://scripts/austro.gd" id="1_nmlgn"]
 [ext_resource type="Texture2D" uid="uid://b34f8eoj7tmhb" path="res://assets/astronaut/idle_austro_frb.png" id="1_np744"]
@@ -293,10 +293,6 @@ animations = [{
 radius = 0.5
 height = 11.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ulkof"]
-radius = 8.0
-height = 20.0
-
 [node name="Astro" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_mask = 254
@@ -313,7 +309,3 @@ offset = Vector2(0, -6)
 position = Vector2(-0.5, -0.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nmlgn")
-
-[node name="CollisionRubbish" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -7)
-shape = SubResource("CapsuleShape2D_ulkof")

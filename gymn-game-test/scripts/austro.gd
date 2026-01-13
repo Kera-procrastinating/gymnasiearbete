@@ -12,31 +12,24 @@ var direction = Input.get_vector("left", "right", "up", "down")
 var last_moving_dir = Vector2.ZERO
 var is_digging : bool
 
-signal digging
-
 func _ready() -> void:
 	position = Vector2(343,288)
 	anim.play("idle_down")
 
 func _physics_process( delta: float) -> void:
 	
-	if is_digging: 
-		if position.distance_to(get_global_mouse_position())< DIGGING_RANGE:
-			digging.emit(get_global_mouse_position())
+	Globals.player_global_position = global_position
 	
 	var dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * speed
 	
-	if dir != Vector2.ZERO: #vector.zero faces nowhere when button isn being pressed
+	if dir != Vector2.ZERO: #vector.zero faces nowhere when button isnt being pressed
 		last_moving_dir = dir # essentially, if the inputed direction is not nothing, 
 		_walk_state(dir)	#then face the inputed direction and walk...i dont get it..
 	else:
 		_idle_state()
 		
 	move_and_slide()
-
-	
-
 	
 func _idle_state()-> void:
 	if last_moving_dir.x < 0:

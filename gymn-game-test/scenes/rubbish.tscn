@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://c3xuy7bl6qf0e"]
 
 [ext_resource type="Texture2D" uid="uid://svecgqh4mdqr" path="res://assets/PostApocalypse_AssetPack_v1/Tiles/Garbage_TileSet.png" id="1_x5rmk"]
-[ext_resource type="Script" uid="uid://tehlyyvikrbo" path="res://scenes/rubbish_pile_tile.gd" id="2_dy6tp"]
+[ext_resource type="Script" uid="uid://tehlyyvikrbo" path="res://scripts/rubbish_pile_tile.gd" id="2_dy6tp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dy6tp"]
 texture = ExtResource("1_x5rmk")
@@ -34,7 +34,7 @@ texture = ExtResource("1_x5rmk")
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.97371, -8, -4.00671, 8, 8, 8, 8, -8)
 6:1/0 = 0
-6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.03162, -8, -8, 8, 8, 8, 4.03161, -8)
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.06659, -4.35258, -8, 8, 8, 8, 1.87952, -4.64935)
 7:1/0 = 0
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 4.00297, 8, 4.00266, -8)
 0:2/0 = 0
