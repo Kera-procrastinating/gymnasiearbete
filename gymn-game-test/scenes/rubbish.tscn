@@ -24,7 +24,7 @@ texture = ExtResource("1_x5rmk")
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -4.01609, -8, -4.00327, 8, 8, 8)
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.02953, -8, -3.99953, -8, -8, 8, 8.02192, 8.2279)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.02953, -8, -3.99953, -8, -8, 8, 8, 8)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.0257, -8, -3.98614, -8, -8, 8, 8, 8)
 3:1/0 = 0
@@ -34,7 +34,7 @@ texture = ExtResource("1_x5rmk")
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.97371, -8, -4.00671, 8, 8, 8, 8, -8)
 6:1/0 = 0
-6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.06659, -4.35258, -8, 8, 8, 8, 1.87952, -4.64935)
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.99414, -8, 4.02195, -8, 8, 8, -8, 8)
 7:1/0 = 0
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 4.00297, 8, 4.00266, -8)
 0:2/0 = 0
@@ -69,7 +69,7 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 9
 sources/0 = SubResource("TileSetAtlasSource_dy6tp")
 
-[node name="RubbishPiles" type="Node2D"]
+[node name="RubbishPiles" type="Node2D" groups=["rubbish"]]
 y_sort_enabled = true
 
 [node name="RubbishPileTile" type="TileMapLayer" parent="."]

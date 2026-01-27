@@ -2,6 +2,9 @@ extends CharacterBody2D #uses velocity to use collision
 class_name Astro
 
 @onready var anim: AnimatedSprite2D = $IdleAnimatedSprite2D
+@onready var interact_ui = $InteractUI
+@onready var inventory_ui = $InventoryUI
+
 @export var speed := 55 
 enum{IDLE, WALK}
 
@@ -12,7 +15,10 @@ var direction = Input.get_vector("left", "right", "up", "down")
 var last_moving_dir = Vector2.ZERO
 var is_digging : bool
 
+
 func _ready() -> void:
+	Globals.set_player_reference(self)
+	
 	position = Vector2(343,288)
 	anim.play("idle_down")
 
@@ -54,3 +60,8 @@ func _walk_state(direction: Vector2)-> void:
 		anim.play("walk_up")
 	elif direction.y > 0:
 		anim.play("walk_down")
+
+func _input(event):
+	if event.is_action_pressed("toggle_inv"):
+		inventory_ui.visible = !inventory_ui.visible
+		

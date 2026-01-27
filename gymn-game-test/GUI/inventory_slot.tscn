@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnp071n0en6ud"]
+
+[ext_resource type="Script" uid="uid://b0oekude8cw00" path="res://scripts/inventory_slot_ui.gd" id="1_ph5ee"]
+[ext_resource type="Texture2D" uid="uid://di1u68fg350nj" path="res://assets/inventory assets/inventorySlot (kopia).png" id="2_ayh3y"]
+[ext_resource type="Texture2D" uid="uid://65jmtqmw1cw0" path="res://assets/PostApocalypse_AssetPack_v1/Objects/general rubbish/Cardboard_2.png" id="3_2fsix"]
+[ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="4_dwi7x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eps8h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42q8p"]
+
+[node name="Slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_ph5ee")
+
+[node name="SlotImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_ayh3y")
+centered = false
+vframes = 2
+
+[node name="ItemIcon" type="Sprite2D" parent="SlotImage"]
+position = Vector2(10, 12)
+scale = Vector2(0.666667, 0.6)
+texture = ExtResource("3_2fsix")
+
+[node name="ItemQuantity" type="Label" parent="SlotImage"]
+self_modulate = Color(0.868985, 0.868985, 0.868985, 1)
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 85.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_dwi7x")
+theme_override_font_sizes/font_size = 72
+text = "1"
+
+[node name="ItemButton" type="Button" parent="."]
+self_modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_eps8h")
+
+[node name="DetailsPanel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = -14.0
+offset_right = 29.0
+offset_bottom = -1.0
+color = Color(0.184278, 0.139659, 0.184273, 1)
+
+[node name="ItemName" type="Label" parent="DetailsPanel"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 180.0
+offset_bottom = 84.0
+scale = Vector2(0.035, 0.035)
+theme_override_fonts/font = ExtResource("4_dwi7x")
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_42q8p")
+text = "name"
+
+[node name="ItemType" type="Label" parent="DetailsPanel"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 180.0
+offset_bottom = 88.0
+scale = Vector2(0.035, 0.035)
+theme_override_fonts/font = ExtResource("4_dwi7x")
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_42q8p")
+text = "Type"
+
+[node name="ItemEffect" type="Label" parent="DetailsPanel"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 9.0
+offset_right = 252.0
+offset_bottom = 92.0
+scale = Vector2(0.035, 0.035)
+theme_override_fonts/font = ExtResource("4_dwi7x")
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_42q8p")
+text = "Effect"
+
+[node name="UsagePanel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = -14.0
+offset_right = 29.0
+offset_bottom = -1.0
+color = Color(0.184314, 0.141176, 0.184314, 1)
+
+[node name="UseButton" type="Button" parent="UsagePanel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 801.0
+offset_bottom = 168.0
+scale = Vector2(0.03, 0.03)
+theme_override_fonts/font = ExtResource("4_dwi7x")
+theme_override_font_sizes/font_size = 120
+text = "use"
+
+[node name="DropButton" type="Button" parent="UsagePanel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 801.0
+offset_bottom = 173.0
+scale = Vector2(0.03, 0.03)
+theme_override_fonts/font = ExtResource("4_dwi7x")
+theme_override_font_sizes/font_size = 120
+text = "Drop"
+
+[connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]
+[connection signal="mouse_exited" from="ItemButton" to="." method="_on_item_button_mouse_exited"]
+[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]

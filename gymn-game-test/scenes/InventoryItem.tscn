@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://clvggqqfp3vnb"]
+
+[ext_resource type="Script" uid="uid://doexkbme65r4y" path="res://scripts/Inventory_item.gd" id="1_mnl66"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdcin"]
+radius = 9.21954
+
+[node name="InventoryItem" type="Node2D" groups=["Items"]]
+y_sort_enabled = true
+script = ExtResource("1_mnl66")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, 2)
+rotation = -1.37733
+shape = SubResource("CircleShape2D_cdcin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

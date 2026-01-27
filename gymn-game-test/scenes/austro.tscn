@@ -1,8 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://d3aun4sr21yqt"]
+[gd_scene load_steps=45 format=3 uid="uid://d3aun4sr21yqt"]
 
 [ext_resource type="Script" uid="uid://bsxwbitpye5e5" path="res://scripts/austro.gd" id="1_nmlgn"]
 [ext_resource type="Texture2D" uid="uid://b34f8eoj7tmhb" path="res://assets/astronaut/idle_austro_frb.png" id="1_np744"]
 [ext_resource type="Texture2D" uid="uid://dpoe1ffwqp85a" path="res://assets/astronaut/walk_astro-3.png" id="3_ulkof"]
+[ext_resource type="Texture2D" uid="uid://lvinvwstxlkj" path="res://assets/inventory assets/press_button_ui.png" id="4_0t5bu"]
+[ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="4_oydcr"]
+[ext_resource type="PackedScene" uid="uid://sh28cl0ljdqq" path="res://GUI/inventory_gui.tscn" id="6_vo512"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_np744"]
 atlas = ExtResource("1_np744")
@@ -293,7 +296,7 @@ animations = [{
 radius = 0.5
 height = 11.0
 
-[node name="Astro" type="CharacterBody2D"]
+[node name="Astro" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_mask = 254
 script = ExtResource("1_nmlgn")
@@ -309,3 +312,47 @@ offset = Vector2(0, -6)
 position = Vector2(-0.5, -0.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nmlgn")
+
+[node name="InteractUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="InteractUI"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -647.0
+offset_top = -128.0
+offset_right = -71.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractUI/Panel"]
+position = Vector2(288, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("4_0t5bu")
+
+[node name="Label" type="Label" parent="InteractUI/Panel"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.5
+offset_top = -23.5
+offset_right = 206.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_oydcr")
+theme_override_font_sizes/font_size = 49
+text = "Press \"E\" to pick up"
+
+[node name="InventoryUI" type="CanvasLayer" parent="."]
+
+[node name="InventoryGUI" parent="InventoryUI" instance=ExtResource("6_vo512")]
