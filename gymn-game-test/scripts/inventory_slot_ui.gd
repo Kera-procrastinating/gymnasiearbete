@@ -37,3 +37,24 @@ func set_item(new_item):
 	else:
 		item_effect.text = ""
 	
+
+func _on_drop_button_pressed() -> void:
+	if item != null:
+		var drop_position = Globals.player_node.global_position
+		var drop_offset = Vector2(0,0)
+		drop_offset = drop_offset.rotated(Globals.player_node.rotation)
+		Globals.drop_item(item, drop_position + drop_offset)
+		Globals.remove_items(item["type"], item["effect"])
+		usage_panel.visible = false
+
+
+func _on_use_button_pressed() -> void:
+	usage_panel.visible = false
+	
+	if item != null and item["effect"] != "":
+		if Globals.player_node:
+			Globals.player_node.apply_item_effect(item)
+			Globals.remove_items(item["type"], item["effect"])
+		else:
+			print("Player not found")
+		

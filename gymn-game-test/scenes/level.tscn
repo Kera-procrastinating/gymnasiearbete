@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://b81u7vg845jjk"]
+[gd_scene load_steps=23 format=4 uid="uid://b81u7vg845jjk"]
 
 [ext_resource type="Script" uid="uid://bpbddp6n38bk4" path="res://scripts/level.gd" id="1_8c41q"]
 [ext_resource type="Texture2D" uid="uid://cfnm1qkmgmj17" path="res://assets/tiles/water.png" id="1_ppgk2"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c3xuy7bl6qf0e" path="res://scenes/rubbish.tscn" id="7_8c41q"]
 [ext_resource type="PackedScene" uid="uid://1t1u73pjfla1" path="res://scenes/old_environment.tscn" id="7_b121j"]
 [ext_resource type="PackedScene" uid="uid://clvggqqfp3vnb" path="res://scenes/InventoryItem.tscn" id="11_t1rx8"]
-[ext_resource type="Texture2D" uid="uid://bojfyuitive0o" path="res://assets/PostApocalypse_AssetPack_v1/Objects/general rubbish/Metal-Plates.png" id="12_8iemx"]
-[ext_resource type="Texture2D" uid="uid://7qydyn2ni5ij" path="res://assets/PostApocalypse_AssetPack_v1/Objects/general rubbish/Chips-pack_Yellow.png" id="12_64w2a"]
-[ext_resource type="Texture2D" uid="uid://c55ud57g4rvbs" path="res://assets/PostApocalypse_AssetPack_v1/Objects/general rubbish/Gray-brick_Debris.png" id="13_fpun6"]
+[ext_resource type="Texture2D" uid="uid://bojfyuitive0o" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Metal-Plates.png" id="11_wc255"]
+[ext_resource type="Texture2D" uid="uid://nfv7aer58nm4" path="res://assets/bits and bobs/Food/Fruit_apple.png" id="12_fpun6"]
+[ext_resource type="Texture2D" uid="uid://c55ud57g4rvbs" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Gray-brick_Debris.png" id="13_wc255"]
+[ext_resource type="AudioStream" uid="uid://cbsphg2j3bvmx" path="res://assets/audio/Cuddle Clouds.ogg" id="14_fpun6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("4_2r41h")
@@ -200,40 +201,40 @@ position_smoothing_enabled = true
 
 [node name="InventoryItem" parent="Inv" instance=ExtResource("11_t1rx8")]
 position = Vector2(408, 288)
-scale = Vector2(0.5, 0.5)
 item_type = "scraps"
 item_name = "metal "
-item_texture = ExtResource("12_8iemx")
-item_effect = "none"
+item_texture = ExtResource("11_wc255")
 
 [node name="InventoryItem2" parent="Inv" instance=ExtResource("11_t1rx8")]
 position = Vector2(392, 280)
-scale = Vector2(0.5, 0.5)
 item_type = "scraps"
 item_name = "metal"
-item_texture = ExtResource("12_8iemx")
-item_effect = "none"
+item_texture = ExtResource("11_wc255")
 
 [node name="InventoryItem3" parent="Inv" instance=ExtResource("11_t1rx8")]
 position = Vector2(416, 264)
-scale = Vector2(0.5, 0.5)
 item_type = "scraps"
 item_name = "metal "
-item_texture = ExtResource("12_8iemx")
-item_effect = "none"
+item_texture = ExtResource("11_wc255")
 
 [node name="InventoryItem4" parent="Inv" instance=ExtResource("11_t1rx8")]
 position = Vector2(400, 304)
-scale = Vector2(0.5, 0.5)
-item_type = "scraps"
-item_name = "alluminium"
-item_texture = ExtResource("12_64w2a")
-item_effect = "melt"
+item_type = "food"
+item_name = "apple"
+item_texture = ExtResource("12_fpun6")
+item_effect = "stamina"
 
 [node name="InventoryItem5" parent="Inv" instance=ExtResource("11_t1rx8")]
 position = Vector2(424, 312)
-scale = Vector2(0.5, 0.5)
 item_type = "scraps"
 item_name = "paper"
-item_texture = ExtResource("13_fpun6")
+item_texture = ExtResource("13_wc255")
 item_effect = "shred"
+
+[node name="BackgroundMusic" type="Node2D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="BackgroundMusic"]
+stream = ExtResource("14_fpun6")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true

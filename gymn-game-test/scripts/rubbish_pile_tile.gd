@@ -26,6 +26,7 @@ func finish_dig():
 	var tile= local_to_map(get_global_mouse_position())
 	set_cell(tile, 0, Vector2i(-1,-1))#remove the tile
 	dig_progress = 0.0
+	### drop item ### smth to do w tile variable
 
 		
 func cancel_dig():

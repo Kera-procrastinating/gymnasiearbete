@@ -65,3 +65,12 @@ func _input(event):
 	if event.is_action_pressed("toggle_inv"):
 		inventory_ui.visible = !inventory_ui.visible
 		
+
+func apply_item_effect(item):
+	match item["effect"]:
+		"stamina":
+			speed += 20
+			print("speed increased to ", speed)
+		###### expand w effects here
+		_:
+			print("There is no effect for this item")
