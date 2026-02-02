@@ -37,6 +37,9 @@ func _physics_process( delta: float) -> void:
 		
 	move_and_slide()
 	
+	if Input.is_action_pressed("pause"):
+		pass
+	
 func _idle_state()-> void:
 	if last_moving_dir.x < 0:
 		$IdleAnimatedSprite2D.flip_h = true

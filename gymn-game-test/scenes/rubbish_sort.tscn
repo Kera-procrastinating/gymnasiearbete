@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://mrl3ei271dkr"]
+
+[ext_resource type="Texture2D" uid="uid://c36i4gv86uk6h" path="res://assets/inventory assets/Bin.png" id="1_c82oe"]
+[ext_resource type="Script" uid="uid://bkr833qevjt08" path="res://scenes/rubbish_sort.gd" id="1_q5t8m"]
+[ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="2_qf1w8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roblx"]
+size = Vector2(2293, 824)
+
+[node name="RubbishSort" type="Node2D"]
+script = ExtResource("1_q5t8m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 2903.0
+offset_bottom = 1555.0
+color = Color(0.162224, 0.29736, 0.526793, 1)
+
+[node name="Bins" type="Node2D" parent="."]
+
+[node name="Bin1" type="Sprite2D" parent="Bins"]
+position = Vector2(479.25, 1161.5)
+scale = Vector2(9.375, 11.2429)
+texture = ExtResource("1_c82oe")
+
+[node name="Bin1text" type="Label" parent="Bins/Bin1"]
+offset_left = -21.4667
+offset_top = 16.9441
+offset_right = 250.533
+offset_bottom = 131.944
+scale = Vector2(0.15, 0.15)
+theme_override_fonts/font = ExtResource("2_qf1w8")
+theme_override_font_sizes/font_size = 100
+text = "Metal"
+
+[node name="Bin2" type="Sprite2D" parent="Bins"]
+position = Vector2(1442, 1167)
+scale = Vector2(9.375, 11.2429)
+texture = ExtResource("1_c82oe")
+
+[node name="Label" type="Label" parent="Bins/Bin2"]
+offset_left = -19.4133
+offset_top = 17.0775
+offset_right = 252.587
+offset_bottom = 132.077
+scale = Vector2(0.15, 0.15)
+theme_override_fonts/font = ExtResource("2_qf1w8")
+theme_override_font_sizes/font_size = 100
+text = "Paper"
+
+[node name="Bin3" type="Sprite2D" parent="Bins"]
+position = Vector2(2406, 1173)
+scale = Vector2(9.375, 11.2429)
+texture = ExtResource("1_c82oe")
+
+[node name="Label" type="Label" parent="Bins/Bin3"]
+offset_left = -26.4533
+offset_top = 16.5438
+offset_right = 328.547
+offset_bottom = 131.544
+scale = Vector2(0.15, 0.15)
+theme_override_fonts/font = ExtResource("2_qf1w8")
+theme_override_font_sizes/font_size = 100
+text = "Plastic"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1403.5, 502)
+shape = SubResource("RectangleShape2D_roblx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://c3xuy7bl6qf0e"]
 
-[ext_resource type="Texture2D" uid="uid://svecgqh4mdqr" path="res://assets/PostApocalypse_AssetPack_v1/Tiles/Garbage_TileSet.png" id="1_x5rmk"]
+[ext_resource type="Texture2D" uid="uid://svecgqh4mdqr" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Tiles/Garbage_TileSet.png" id="1_x5rmk"]
 [ext_resource type="Script" uid="uid://tehlyyvikrbo" path="res://scripts/rubbish_pile_tile.gd" id="2_dy6tp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dy6tp"]

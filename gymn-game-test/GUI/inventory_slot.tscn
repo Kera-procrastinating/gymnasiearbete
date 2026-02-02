@@ -22,8 +22,8 @@ centered = false
 vframes = 2
 
 [node name="ItemIcon" type="Sprite2D" parent="SlotImage"]
-position = Vector2(10, 12)
-scale = Vector2(0.666667, 0.6)
+position = Vector2(9.5, 12.5)
+scale = Vector2(0.75, 0.7)
 texture = ExtResource("3_2fsix")
 
 [node name="ItemQuantity" type="Label" parent="SlotImage"]

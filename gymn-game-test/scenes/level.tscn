@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://be8y5yt6cyek5" path="res://scenes/space_ship.tscn" id="6_klq6b"]
 [ext_resource type="PackedScene" uid="uid://c3xuy7bl6qf0e" path="res://scenes/rubbish.tscn" id="7_8c41q"]
 [ext_resource type="PackedScene" uid="uid://1t1u73pjfla1" path="res://scenes/old_environment.tscn" id="7_b121j"]
-[ext_resource type="PackedScene" uid="uid://clvggqqfp3vnb" path="res://scenes/InventoryItem.tscn" id="11_t1rx8"]
-[ext_resource type="Texture2D" uid="uid://bojfyuitive0o" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Metal-Plates.png" id="11_wc255"]
-[ext_resource type="Texture2D" uid="uid://nfv7aer58nm4" path="res://assets/bits and bobs/Food/Fruit_apple.png" id="12_fpun6"]
-[ext_resource type="Texture2D" uid="uid://c55ud57g4rvbs" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Gray-brick_Debris.png" id="13_wc255"]
+[ext_resource type="PackedScene" uid="uid://dtbt2ikxjuq5a" path="res://scenes/Start.tscn" id="11_t1rx8"]
+[ext_resource type="PackedScene" uid="uid://qghl03vgfk8j" path="res://scenes/pause.tscn" id="12_8iemx"]
+[ext_resource type="PackedScene" uid="uid://mrl3ei271dkr" path="res://scenes/rubbish_sort.tscn" id="12_fpun6"]
+[ext_resource type="PackedScene" uid="uid://co7ew3g8ayut2" path="res://scenes/objective_scene.tscn" id="13_64w2a"]
 [ext_resource type="AudioStream" uid="uid://cbsphg2j3bvmx" path="res://assets/audio/Cuddle Clouds.ogg" id="14_fpun6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
@@ -197,40 +197,6 @@ metadata/_edit_lock_ = true
 zoom = Vector2(12, 12)
 position_smoothing_enabled = true
 
-[node name="Inv" type="Node2D" parent="."]
-
-[node name="InventoryItem" parent="Inv" instance=ExtResource("11_t1rx8")]
-position = Vector2(408, 288)
-item_type = "scraps"
-item_name = "metal "
-item_texture = ExtResource("11_wc255")
-
-[node name="InventoryItem2" parent="Inv" instance=ExtResource("11_t1rx8")]
-position = Vector2(392, 280)
-item_type = "scraps"
-item_name = "metal"
-item_texture = ExtResource("11_wc255")
-
-[node name="InventoryItem3" parent="Inv" instance=ExtResource("11_t1rx8")]
-position = Vector2(416, 264)
-item_type = "scraps"
-item_name = "metal "
-item_texture = ExtResource("11_wc255")
-
-[node name="InventoryItem4" parent="Inv" instance=ExtResource("11_t1rx8")]
-position = Vector2(400, 304)
-item_type = "food"
-item_name = "apple"
-item_texture = ExtResource("12_fpun6")
-item_effect = "stamina"
-
-[node name="InventoryItem5" parent="Inv" instance=ExtResource("11_t1rx8")]
-position = Vector2(424, 312)
-item_type = "scraps"
-item_name = "paper"
-item_texture = ExtResource("13_wc255")
-item_effect = "shred"
-
 [node name="BackgroundMusic" type="Node2D" parent="."]
 
 [node name="Music" type="AudioStreamPlayer2D" parent="BackgroundMusic"]
@@ -238,3 +204,17 @@ stream = ExtResource("14_fpun6")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ObjectiveScene" parent="CanvasLayer" instance=ExtResource("13_64w2a")]
+
+[node name="RubbishSort" parent="CanvasLayer" instance=ExtResource("12_fpun6")]
+visible = false
+
+[node name="PauseUI" parent="CanvasLayer" instance=ExtResource("12_8iemx")]
+visible = false
+
+[node name="StartUI" parent="CanvasLayer" instance=ExtResource("11_t1rx8")]
