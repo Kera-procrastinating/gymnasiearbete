@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://mrl3ei271dkr"]
+[gd_scene load_steps=6 format=3 uid="uid://mrl3ei271dkr"]
 
 [ext_resource type="Texture2D" uid="uid://c36i4gv86uk6h" path="res://assets/inventory assets/Bin.png" id="1_c82oe"]
-[ext_resource type="Script" uid="uid://bkr833qevjt08" path="res://scenes/rubbish_sort.gd" id="1_q5t8m"]
+[ext_resource type="Script" uid="uid://bkr833qevjt08" path="res://scripts/rubbish_sort.gd" id="1_q5t8m"]
 [ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="2_qf1w8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roblx"]
-size = Vector2(2293, 824)
+size = Vector2(1834, 824)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q5t8m"]
+radius = 118.998
+height = 879.962
 
 [node name="RubbishSort" type="Node2D"]
 script = ExtResource("1_q5t8m")
@@ -62,10 +66,31 @@ theme_override_fonts/font = ExtResource("2_qf1w8")
 theme_override_font_sizes/font_size = 100
 text = "Plastic"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DropArea" type="Area2D" parent="."]
+position = Vector2(1100, 500)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1403.5, 502)
+[node name="DropBox" type="CollisionShape2D" parent="DropArea"]
 shape = SubResource("RectangleShape2D_roblx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(490, 1166)
+rotation = -1.57236
+shape = SubResource("CapsuleShape2D_q5t8m")
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(1437, 1181)
+rotation = -1.57236
+shape = SubResource("CapsuleShape2D_q5t8m")
+
+[node name="Area2D4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(2403, 1187)
+rotation = -1.57236
+shape = SubResource("CapsuleShape2D_q5t8m")
+
+[node name="Items_sort" type="Node2D" parent="."]

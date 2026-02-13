@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://doexkbme65r4y" path="res://scripts/Inventory_item.gd" id="1_mnl66"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cdcin"]
-radius = 9.21954
+radius = 6.79192
 
 [node name="InventoryItem" type="Node2D" groups=["Items"]]
 y_sort_enabled = true

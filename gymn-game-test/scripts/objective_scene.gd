@@ -10,11 +10,11 @@ func _process(delta: float) -> void:
 		objects_collected()
 	elif objective == 2:
 		label.text = ""
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(2.0).timeout #idek
 
 	
 func objects_collected():
 	if Globals.invno > 10:
 		label.text = "Objective complete"
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(5.0).timeout # strop reading code for five seconds before continuing
 		objective = 2

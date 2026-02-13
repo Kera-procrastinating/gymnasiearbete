@@ -3,7 +3,7 @@ class_name Astro
 
 @onready var anim: AnimatedSprite2D = $IdleAnimatedSprite2D
 @onready var interact_ui = $InteractUI
-@onready var inventory_ui = $InventoryUI
+@onready var inventory_ui = get_parent().get_node("CanvasLayer/InventoryGUI")
 
 @export var speed := 55 
 enum{IDLE, WALK}
@@ -17,14 +17,14 @@ var is_digging : bool
 
 
 func _ready() -> void:
-	Globals.set_player_reference(self)
+	Globals.set_player_reference(self) #in globals
 	
-	position = Vector2(343,288)
-	anim.play("idle_down")
+	position = Vector2(343,288) # start pos
+	anim.play("idle_down") #start animation
 
 func _physics_process( delta: float) -> void:
 	
-	Globals.player_global_position = global_position
+	Globals.player_global_position = global_position #in globals player glob pos is vector 2D,###########
 	
 	var dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * speed
@@ -36,9 +36,7 @@ func _physics_process( delta: float) -> void:
 		_idle_state()
 		
 	move_and_slide()
-	
-	if Input.is_action_pressed("pause"):
-		pass
+
 	
 func _idle_state()-> void:
 	if last_moving_dir.x < 0:
@@ -66,14 +64,14 @@ func _walk_state(direction: Vector2)-> void:
 
 func _input(event):
 	if event.is_action_pressed("toggle_inv"):
-		inventory_ui.visible = !inventory_ui.visible
+		inventory_ui.visible = !inventory_ui.visible #inventory ui seen is invisble if visible and vice versa
 		
 
-func apply_item_effect(item):
+func apply_item_effect(item): #items with special effects can effect the character
 	match item["effect"]:
-		"stamina":
+		"stamina": #applied to apple in spawnable_rubbish_items list in globals, adds to all apples
 			speed += 20
 			print("speed increased to ", speed)
 		###### expand w effects here
 		_:
-			print("There is no effect for this item")
+			print("There is no effect for this item") #no effect does nothing, maybe add visible box later

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b81u7vg845jjk"]
+[gd_scene load_steps=24 format=4 uid="uid://b81u7vg845jjk"]
 
 [ext_resource type="Script" uid="uid://bpbddp6n38bk4" path="res://scripts/level.gd" id="1_8c41q"]
 [ext_resource type="Texture2D" uid="uid://cfnm1qkmgmj17" path="res://assets/tiles/water.png" id="1_ppgk2"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://mrl3ei271dkr" path="res://scenes/rubbish_sort.tscn" id="12_fpun6"]
 [ext_resource type="PackedScene" uid="uid://co7ew3g8ayut2" path="res://scenes/objective_scene.tscn" id="13_64w2a"]
 [ext_resource type="AudioStream" uid="uid://cbsphg2j3bvmx" path="res://assets/audio/Cuddle Clouds.ogg" id="14_fpun6"]
+[ext_resource type="PackedScene" uid="uid://sh28cl0ljdqq" path="res://GUI/inventory_gui.tscn" id="15_wc255"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("4_2r41h")
@@ -213,6 +214,8 @@ parameters/looping = true
 
 [node name="RubbishSort" parent="CanvasLayer" instance=ExtResource("12_fpun6")]
 visible = false
+
+[node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("15_wc255")]
 
 [node name="PauseUI" parent="CanvasLayer" instance=ExtResource("12_8iemx")]
 visible = false

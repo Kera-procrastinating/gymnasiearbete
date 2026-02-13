@@ -4,7 +4,7 @@ extends Node2D
 
 func _on_unpause_button_pressed() -> void:
 	pauseui.visible = false
-	get_tree().paused = false
+	get_tree().paused = false ##############
 	
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+	get_tree().quit() #close the whole game
