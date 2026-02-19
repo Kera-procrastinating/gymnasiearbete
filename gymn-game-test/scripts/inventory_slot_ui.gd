@@ -53,11 +53,13 @@ func _on_use_button_pressed() -> void:#button on inventory when the inventory sl
 	if item != null and item["effect"] != "": #omly if the item has an effect
 		if Globals.player_node:
 			Globals.player_node.apply_item_effect(item) #apply effect to player from astro script
+			
+			##############bucket.apply_object_effect
+			
 			Globals.remove_items(item["type"], item["effect"]) #globals, remove from inventory
 		else:
 			print("Player not found") #avoiding crashing
 		
-
 
 	
 	

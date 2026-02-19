@@ -4,21 +4,27 @@ var rubbish_sort_visible := false
 var player_global_position: Vector2
 var inventory =[]
 var invno := 0 #for objective
-var spawnable_rubbish_items = [
+var spawnable_rubbish_items = [ #used in rubbish_pile_tile scene, spawn_random_items func
 	{"type": "metal", "name": "metal plates", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Metal-Plates.png")},
 	{"type": "wood1", "name": "palet1", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Pallet_1.png")},
 	{"type": "wood2", "name": "palet2", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Pallet_2.png")},
 	{"type": "metal", "name": "exhaust", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Exhaust-pipe.png")},
 	{"type": "plastic", "name": "cone", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/road stuff/Traffic-cone.png")},	
+	{"type": "plastic", "name": "cone", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/road stuff/Traffic-cone.png")},
 ]
+var objective_tools = [{"type": "bucket", "name": "empty", "effect": "fill", "texture": preload("res://assets/bits and bobs/objective tools/Bucket2.png")}]
 
 signal inventory_updated #whenever an item is added or removed, update the inventory 
 
-var player_node : Astro = null #set player as player from player scene
+
 @onready var inventory_slot_scene = preload("res://GUI/inventory_slot.tscn") #need the scene to add/ remove from slots used in inventory ui, _on_inv_updated()
 @onready var rubbish_sort_scene = preload("res://scenes/rubbish_sort.tscn") #connected in _ready in level and then 
 #instantiated variable set a empty and then updated to instantiated rubbish_sort_scene in _ready in level
+@onready var level_scene = preload("res://scenes/level.tscn")
+
+var player_node : Astro = null #set player as player from player scene
 var rubbishsort_instance: Node = null #used in function get_drop_variable at end of Globals script
+var level_instance: Node = null
 
 func _ready() -> void:
 	inventory.resize(15) #inventory list has 15 spaces
@@ -68,12 +74,22 @@ func ajust_drop_position(position):# in a range around the character place item 
 	return position
 
 func drop_item(item_data, drop_position):
-	var item_scene = load(item_data["scene_path"])#inventory item scene: pickup()
+	var items_node = level_instance.get_node("Items")
+	var sort_items_node = rubbishsort_instance.get_node("Items_sort")
+	
+	var item_scene = load(item_data["scene_path"])#inventory_item scene: pickup()
 	var item_instance = item_scene.instantiate()
 	item_instance.set_item_data(item_data)# inventory item scene, get data from that scene path
 	drop_position = get_drop_position()# next func
 	item_instance.global_position = drop_position # set the global position of the item as the position just created
-	get_tree().current_scene.add_child(item_instance) #add item to scene
+	get_tree().current_scene.add_child(item_instance) #add item to scene (Where?? ToT)
+	
+	
+	if rubbish_sort_visible == false:
+		items_node.add_child(item_instance) #if sorting is not active, add to map
+	else:
+		sort_items_node.add_child(item_instance)# otherwise add to sorting scene
+
 	
 func get_drop_position() -> Vector2:
 	var drop_position : Vector2 # drop position created, a cevtor
@@ -102,5 +118,4 @@ func get_drop_variables()	:
 	var droparea = rubbishsort_instance.get_node("DropArea") #rubbishsort_instance set as empty node in top of globals
 	var dropbox = rubbishsort_instance.get_node("DropArea/DropBox")#and them updates in rubbishsort scene as self
 	return [droparea, dropbox] #get variables in a list cuz cant return it any other way :D
-	
 	

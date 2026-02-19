@@ -67,11 +67,13 @@ func _input(event):
 		inventory_ui.visible = !inventory_ui.visible #inventory ui seen is invisble if visible and vice versa
 		
 
-func apply_item_effect(item): #items with special effects can effect the character
+func apply_item_effect(item): #items with special effects can effect the character, taken to inverntory slot ui
 	match item["effect"]:
 		"stamina": #applied to apple in spawnable_rubbish_items list in globals, adds to all apples
 			speed += 20
 			print("speed increased to ", speed)
-		###### expand w effects here
+		"water":
+			pass
+			
 		_:
 			print("There is no effect for this item") #no effect does nothing, maybe add visible box later

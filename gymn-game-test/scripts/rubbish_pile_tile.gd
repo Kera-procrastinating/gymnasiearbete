@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 func finish_dig():#physics_process
 	var tile= local_to_map(get_global_mouse_position())
 	set_cell(tile, 0, Vector2i(-1,-1))#remove the tile
-	spawn_random_items() #lower in script
+	spawn_random_items(3) #lower in script
 	dig_progress = 0.0 #reset digging time
 
 		
@@ -33,24 +33,30 @@ func cancel_dig():#physics_process
 	dig_progress = 0.0
 
 	
-func spawn_random_items():#physics_process
+func spawn_random_items(count):#finish_dig
 	var spawned_count = 0
-	while spawned_count < 3:
+	while spawned_count < count:
 		spawn_item(Globals.spawnable_rubbish_items[randi() % Globals.spawnable_rubbish_items.size()], position)
 		spawned_count += 1
-	
-
+		
 func spawn_item(data, position):#physics_process
 	var item_scene = preload("res://scenes/InventoryItem.tscn")
 	var item_instance = item_scene.instantiate()
 	var mouse_pos = get_global_mouse_position()#get_drop_position()
 	item_instance.initiate_items(data["type"], data["name"], data["effect"], data["texture"]) # gives to/takes from inventory item
 	item_instance.global_position = mouse_pos #items spawn position is the mouse's current position
+	items_node.add_child(item_instance)
 	
-	if Globals.rubbish_sort_visible == false:
-		items_node.add_child(item_instance) #if sorting is not active, add to map
-	else:
-		sort_items_node.add_child(item_instance)# otherwise add to sorting scene
+func spawn_objective_tools(i): #change i depending on objective 
+	spawn_objective_tool_data(Globals.objective_tools[i], position)
+
+func spawn_objective_tool_data(data, position):#takes data, position always infont of the spaceship
+	var item_scene = preload("res://scenes/InventoryItem.tscn")
+	var item_instance = item_scene.instantiate()
+	item_instance.initiate_items(data["type"], data["name"], data["effect"], data["texture"]) # gives to/takes from inventory item
+	item_instance.global_position = Vector2(343,305)
+	items_node.add_child(item_instance)
+	
 
 func current_tile_data():#physics_process, checking is there is still a tile in the tile map at the mouse postition
 	var mouse_pos = get_global_mouse_position() #godot function

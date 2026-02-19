@@ -64,6 +64,3 @@ func initiate_items(type, name, effect, texture):# used in rubbish_pile_tile scr
 	item_name = name
 	item_effect = effect
 	item_texture = texture
-
-func spawn_item(data, position): ######################################
-	pass

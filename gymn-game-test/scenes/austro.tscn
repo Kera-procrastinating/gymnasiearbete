@@ -313,6 +313,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nmlgn")
 
 [node name="InteractUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="InteractUI"]
 self_modulate = Color(1, 1, 1, 0)
