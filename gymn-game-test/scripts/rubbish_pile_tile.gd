@@ -27,7 +27,7 @@ func finish_dig():#physics_process
 	set_cell(tile, 0, Vector2i(-1,-1))#remove the tile
 	spawn_random_items(3) #lower in script
 	dig_progress = 0.0 #reset digging time
-
+	$"../AudioStreamPlayer2D".play()
 		
 func cancel_dig():#physics_process
 	dig_progress = 0.0

@@ -6,10 +6,12 @@ var inventoryUI_instance = inventoryUI.instantiate() #iniciate inventory to add 
 @onready var inv_layer = $CanvasLayer #taken to globals
 @onready var droparea = $DropArea #taken to globals (drop items in drop area)
 @onready var dropbox = $DropArea/DropBoxv#taken to globals(tells code in globals where the area is located)
-@onready var Items_node = $Items_sort
+@onready var Items_sort_node = $Items_sort
 
 func _ready() -> void:
 	Globals.rubbishsort_instance = self #set the empty variable in globals to this scene, just to
 	#be able to refenerce this scene in globals
 
-	
+
+func _on_drop_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

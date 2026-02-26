@@ -82,13 +82,14 @@ func drop_item(item_data, drop_position):
 	item_instance.set_item_data(item_data)# inventory item scene, get data from that scene path
 	drop_position = get_drop_position()# next func
 	item_instance.global_position = drop_position # set the global position of the item as the position just created
-	get_tree().current_scene.add_child(item_instance) #add item to scene (Where?? ToT)
+	#get_tree().current_scene.add_child(item_instance) #add item to scene (Where?? ToT)
 	
 	
 	if rubbish_sort_visible == false:
-		items_node.add_child(item_instance) #if sorting is not active, add to map
+		get_tree().current_scene.get_node("Items").add_child(item_instance) #if sorting is not active, add to map
+		#print(items_node.get_children())
 	else:
-		sort_items_node.add_child(item_instance)# otherwise add to sorting scene
+		get_tree().current_scene.get_node("CanvasLayer/RubbishSort/Items_sort").add_child(item_instance)# otherwise add to sorting scene
 
 	
 func get_drop_position() -> Vector2:

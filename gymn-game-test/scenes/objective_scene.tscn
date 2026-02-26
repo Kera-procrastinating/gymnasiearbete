@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://co7ew3g8ayut2"]
+[gd_scene load_steps=6 format=3 uid="uid://co7ew3g8ayut2"]
 
 [ext_resource type="Script" uid="uid://cdrcdxybhvjpw" path="res://scripts/objective_scene.gd" id="1_22ab8"]
 [ext_resource type="Texture2D" uid="uid://lvinvwstxlkj" path="res://assets/inventory assets/press_button_ui.png" id="1_kw8yg"]
 [ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="2_8k107"]
 [ext_resource type="Texture2D" uid="uid://ccyd74otetykv" path="res://assets/bits and bobs/objective tools/Bar images/empty_bar.png" id="4_ita62"]
+[ext_resource type="AudioStream" uid="uid://cqu1hexcfcauu" path="res://assets/audio/power_up.wav" id="5_6yoap"]
 
 [node name="ObjectiveScene" type="Node2D"]
 script = ExtResource("1_22ab8")
@@ -38,5 +39,9 @@ texture = ExtResource("4_ita62")
 position = Vector2(13.725, -1.13196)
 scale = Vector2(1.69318, 0.994107)
 polygon = PackedVector2Array(63.357, 434.693, 104.699, 435.699, 105.29, 404.516, 97.0215, 404.516, 97.6121, 370.314, 87.5718, 370.314, 87.5718, 337.118, 77.5315, 337.118, 77.5315, 307.947, 68.6725, 307.947, 68.6725, 260.668, 76.9409, 260.668, 76.9409, 244.573, 87.5718, 244.573, 87.5718, 148.004, 64.5383, 148.004)
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_6yoap")
+volume_db = -3.006
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

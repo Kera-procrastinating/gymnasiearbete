@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b81u7vg845jjk"]
+[gd_scene load_steps=25 format=4 uid="uid://b81u7vg845jjk"]
 
 [ext_resource type="Script" uid="uid://bpbddp6n38bk4" path="res://scripts/level.gd" id="1_8c41q"]
 [ext_resource type="Texture2D" uid="uid://cfnm1qkmgmj17" path="res://assets/tiles/water.png" id="1_ppgk2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://be8y5yt6cyek5" path="res://scenes/space_ship.tscn" id="6_klq6b"]
 [ext_resource type="PackedScene" uid="uid://c3xuy7bl6qf0e" path="res://scenes/rubbish.tscn" id="7_8c41q"]
 [ext_resource type="PackedScene" uid="uid://1t1u73pjfla1" path="res://scenes/old_environment.tscn" id="7_b121j"]
+[ext_resource type="AudioStream" uid="uid://bxxxjxeyf5fa6" path="res://assets/audio/Pause.wav" id="11_arp2o"]
 [ext_resource type="PackedScene" uid="uid://dtbt2ikxjuq5a" path="res://scenes/Start.tscn" id="11_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://qghl03vgfk8j" path="res://scenes/pause.tscn" id="12_8iemx"]
 [ext_resource type="PackedScene" uid="uid://mrl3ei271dkr" path="res://scenes/rubbish_sort.tscn" id="12_fpun6"]
@@ -198,13 +199,16 @@ metadata/_edit_lock_ = true
 zoom = Vector2(12, 12)
 position_smoothing_enabled = true
 
-[node name="BackgroundMusic" type="Node2D" parent="."]
+[node name="MusicAndEffects" type="Node2D" parent="."]
 
-[node name="Music" type="AudioStreamPlayer2D" parent="BackgroundMusic"]
+[node name="Music" type="AudioStreamPlayer2D" parent="MusicAndEffects"]
 stream = ExtResource("14_fpun6")
-volume_db = -80.0
+volume_db = -6.058
 autoplay = true
 parameters/looping = true
+
+[node name="PauseSound" type="AudioStreamPlayer2D" parent="MusicAndEffects"]
+stream = ExtResource("11_arp2o")
 
 [node name="Items" type="Node2D" parent="."]
 

@@ -33,6 +33,7 @@ func update_objective_bar():
 	objectives_completed += 1
 	objectives_completed = clamp(objectives_completed, 0, objective_bar_list.size() - 1)
 	objective_bar_sprite.texture = objective_bar_list[objectives_completed]
+	$PickupSound.play()
 	
 func objects_collected(): ####1
 	label.text = "Collect 10 rubbish"
@@ -62,4 +63,4 @@ func _on_area_2d_body_entered(body: Astro):####2
 			objective = 3
 			
 func apply_object_effect():
-	pass
+	pass #when button clicked, fill/ empty water

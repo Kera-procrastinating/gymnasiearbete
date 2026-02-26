@@ -94,3 +94,5 @@ rotation = -1.57236
 shape = SubResource("CapsuleShape2D_q5t8m")
 
 [node name="Items_sort" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="DropArea" to="." method="_on_drop_area_area_entered"]

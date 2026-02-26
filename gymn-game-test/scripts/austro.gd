@@ -4,6 +4,8 @@ class_name Astro
 @onready var anim: AnimatedSprite2D = $IdleAnimatedSprite2D
 @onready var interact_ui = $InteractUI
 @onready var inventory_ui = get_parent().get_node("CanvasLayer/InventoryGUI")
+@onready var objective_scene = get_parent().get_node("CanvasLayer/ObjectiveScene")
+
 
 @export var speed := 55 
 enum{IDLE, WALK}
@@ -73,7 +75,6 @@ func apply_item_effect(item): #items with special effects can effect the charact
 			speed += 20
 			print("speed increased to ", speed)
 		"water":
-			pass
-			
+			objective_scene.apply_object_effect() #fills the bucket water
 		_:
 			print("There is no effect for this item") #no effect does nothing, maybe add visible box later
