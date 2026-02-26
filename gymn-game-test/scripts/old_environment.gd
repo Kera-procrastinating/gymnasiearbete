@@ -7,5 +7,6 @@ extends StaticBody2D
 #from rubbish_pile_tile scene in order to take spawn func
 
 func _on_area_2d_body_entered(body: Astro) -> void:
-	rubbish_pile_tile.spawn_random_items(10)
+	pass
+	#rubbish_pile_tile.spawn_random_items(10)
 	#taken from rubbish_pile_tile scene, spawns x amount of items at mouses position

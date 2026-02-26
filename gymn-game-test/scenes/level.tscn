@@ -225,4 +225,3 @@ visible = false
 visible = false
 
 [node name="StartUI" parent="CanvasLayer" instance=ExtResource("11_t1rx8")]
-visible = false
