@@ -19,6 +19,7 @@ var is_digging : bool
 
 
 func _ready() -> void:
+	print("hej")
 	Globals.set_player_reference(self) #in globals
 	
 	position = Vector2(343,288) # start pos
@@ -53,9 +54,14 @@ func _idle_state()-> void:
 		anim.play("idle_down")
 
 func _walk_state(direction: Vector2)-> void:
+	var sound := preload("res://assets/audio/footstep grass 1.wav")
+	sound.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	$FootstepsGrass.stream = sound
+	
 	if direction.x < 0:
 		$IdleAnimatedSprite2D.flip_h = true
 		anim.play("walk_right")
+		$FootstepsGrass.play()
 	elif direction.x > 0:
 		$IdleAnimatedSprite2D.flip_h = false
 		anim.play("walk_right")
