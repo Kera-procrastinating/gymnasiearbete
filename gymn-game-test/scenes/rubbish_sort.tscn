@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="2_qf1w8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roblx"]
-size = Vector2(1834, 824)
+size = Vector2(669.038, 558.497)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q5t8m"]
 radius = 118.998
@@ -68,8 +68,11 @@ text = "Plastic"
 
 [node name="DropArea" type="Area2D" parent="."]
 position = Vector2(1100, 500)
+scale = Vector2(2.80988, 1.34396)
 
 [node name="DropBox" type="CollisionShape2D" parent="DropArea"]
+position = Vector2(-6.91414e-06, 2.98972)
+scale = Vector2(1, 1.02276)
 shape = SubResource("RectangleShape2D_roblx")
 
 [node name="Area2D2" type="Area2D" parent="."]

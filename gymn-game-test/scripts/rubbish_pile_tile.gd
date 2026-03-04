@@ -27,7 +27,7 @@ func finish_dig():#physics_process
 	set_cell(tile, 0, Vector2i(-1,-1))#remove the tile
 	spawn_random_items(3) #lower in script
 	dig_progress = 0.0 #reset digging time
-	$"../AudioStreamPlayer2D".play()
+	$"../RubbishDug".play()
 		
 func cancel_dig():#physics_process
 	dig_progress = 0.0
@@ -54,7 +54,10 @@ func spawn_objective_tool_data(data, position):#takes data, position always info
 	var item_scene = preload("res://scenes/InventoryItem.tscn")
 	var item_instance = item_scene.instantiate()
 	item_instance.initiate_items(data["type"], data["name"], data["effect"], data["texture"]) # gives to/takes from inventory item
-	item_instance.global_position = Vector2(343,305)
+	if data["name"] == "empty": #if is empty bucket, spawn at spaceship ###relates to inventory slot ui, on_use_button_pressed
+		item_instance.global_position = Vector2(343,305)
+	if data["name"] == "filled" and Globals.reached_water == true: #if filled bucket, spawn at players feet
+		item_instance.global_position = Globals.player_global_position + Vector2(0,1)
 	items_node.add_child(item_instance)
 	
 

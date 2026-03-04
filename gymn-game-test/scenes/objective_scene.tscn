@@ -42,6 +42,7 @@ polygon = PackedVector2Array(63.357, 434.693, 104.699, 435.699, 105.29, 404.516,
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_6yoap")
-volume_db = -3.006
+volume_db = -6.61
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

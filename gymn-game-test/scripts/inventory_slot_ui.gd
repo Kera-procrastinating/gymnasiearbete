@@ -8,7 +8,8 @@ extends Panel
 @onready var item_effect = $DetailsPanel/ItemEffect
 @onready var usage_panel = $UsagePanel
 @onready var rubbishsort = get_parent().get_parent().get_parent().get_parent().get_node("RubbishSort")
-
+@onready var rubbish_pile_tile_scene = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Environment/Rubbish/RubbishPileTile")
+						#use this to spawn in filled waterbucket, used in on_use_button_pressed
 var item = null
 var drop_position
 
@@ -50,13 +51,19 @@ func _on_drop_button_pressed() -> void: #button on inventory when the inventory 
 func _on_use_button_pressed() -> void:#button on inventory when the inventory slot is clicked
 	usage_panel.visible = false
 	
-	if item != null and item["effect"] != "": #omly if the item has an effect
+	if item != null and item["effect"] != "" : #omly if the item has an effect
 		if Globals.player_node:
-			Globals.player_node.apply_item_effect(item) #apply effect to player from astro script
-			
-			##############bucket.apply_object_effect
-			
-			Globals.remove_items(item["type"], item["effect"]) #globals, remove from inventory
+			if Globals.reached_water: #if by water source
+				Globals.player_node.apply_item_effect(item) #apply effect to player from astro script
+				Globals.remove_items(item["type"], item["effect"]) #globals, remove from inventory
+				
+				if item["effect"] == "fill": #if empty waterbucket
+					rubbish_pile_tile_scene.spawn_objective_tools(1)#fill with water
+			else:
+				if item["effect"] != "fill":
+					Globals.player_node.apply_item_effect(item)	
+					Globals.remove_items(item["type"], item["effect"]) #globals, remove from inventory
+				#alltså, when the bucket cannot be filled with water, do not remove the bucket from inventory
 		else:
 			print("Player not found") #avoiding crashing
 		

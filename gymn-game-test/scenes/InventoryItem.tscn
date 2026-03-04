@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://clvggqqfp3vnb"]
+[gd_scene load_steps=4 format=3 uid="uid://clvggqqfp3vnb"]
 
 [ext_resource type="Script" uid="uid://doexkbme65r4y" path="res://scripts/Inventory_item.gd" id="1_mnl66"]
+[ext_resource type="AudioStream" uid="uid://bjccmo63vkg53" path="res://assets/audio/pick up sound.wav" id="2_mnl66"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cdcin"]
 radius = 6.79192
@@ -20,6 +21,10 @@ shape = SubResource("CircleShape2D_cdcin")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
+
+[node name="PickupAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mnl66")
+volume_db = -6.684
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

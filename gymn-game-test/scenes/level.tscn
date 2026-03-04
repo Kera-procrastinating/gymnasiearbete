@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b81u7vg845jjk"]
+[gd_scene load_steps=26 format=4 uid="uid://b81u7vg845jjk"]
 
 [ext_resource type="Script" uid="uid://bpbddp6n38bk4" path="res://scripts/level.gd" id="1_8c41q"]
 [ext_resource type="Texture2D" uid="uid://cfnm1qkmgmj17" path="res://assets/tiles/water.png" id="1_ppgk2"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://co7ew3g8ayut2" path="res://scenes/objective_scene.tscn" id="13_64w2a"]
 [ext_resource type="AudioStream" uid="uid://cbsphg2j3bvmx" path="res://assets/audio/Cuddle Clouds.ogg" id="14_fpun6"]
 [ext_resource type="PackedScene" uid="uid://sh28cl0ljdqq" path="res://GUI/inventory_gui.tscn" id="15_wc255"]
+[ext_resource type="Texture2D" uid="uid://lvinvwstxlkj" path="res://assets/inventory assets/press_button_ui.png" id="17_ux5qa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("4_2r41h")
@@ -203,7 +204,7 @@ position_smoothing_enabled = true
 
 [node name="Music" type="AudioStreamPlayer2D" parent="MusicAndEffects"]
 stream = ExtResource("14_fpun6")
-volume_db = -6.058
+volume_db = -5.288
 autoplay = true
 parameters/looping = true
 
@@ -211,6 +212,8 @@ parameters/looping = true
 stream = ExtResource("11_arp2o")
 
 [node name="Items" type="Node2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(1.00281, 1.00194)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -225,3 +228,11 @@ visible = false
 visible = false
 
 [node name="StartUI" parent="CanvasLayer" instance=ExtResource("11_t1rx8")]
+visible = false
+
+[node name="InventoryClosed" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(2798, 799)
+rotation = -1.5708
+scale = Vector2(4, 4)
+texture = ExtResource("17_ux5qa")

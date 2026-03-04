@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dxdhkgr3dtu3w"
-path="res://.godot/imported/catch ball 14.wav-d1fe748cbf0b8caeee8a7def4bb4fa7c.sample"
+path="res://.godot/imported/Digging rubbish.wav-eac10054fb475fcaa3bfd5a7ba7a2f68.sample"
 
 [deps]
 
-source_file="res://assets/audio/catch ball 14.wav"
-dest_files=["res://.godot/imported/catch ball 14.wav-d1fe748cbf0b8caeee8a7def4bb4fa7c.sample"]
+source_file="res://assets/audio/Digging rubbish.wav"
+dest_files=["res://.godot/imported/Digging rubbish.wav-eac10054fb475fcaa3bfd5a7ba7a2f68.sample"]
 
 [params]
 

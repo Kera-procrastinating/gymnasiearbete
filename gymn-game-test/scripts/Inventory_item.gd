@@ -7,6 +7,7 @@ extends Node2D
 @export var item_texture: Texture
 @export var item_effect = ""
 @onready var icon_sprite = $Sprite2D
+@onready var pickup_audio = $PickupAudio
 
 #scene_path ##############################################################################
 var scene_path: String = "res://scenes/InventoryItem.tscn"
@@ -21,10 +22,8 @@ func _ready() -> void:
 func _process(delta: float) -> void: 
 	if Engine.is_editor_hint(): #for every fram in the editor...?
 		icon_sprite.texture = item_texture #set texture
-	
 	if player_in_range and Input.is_action_just_pressed("pick_up"):
 		pick_up_item() #func below, takes the items data
-	
 		
 func pick_up_item():# used in globals when scene path is taken to load item scene
 	var item = {
@@ -38,6 +37,8 @@ func pick_up_item():# used in globals when scene path is taken to load item scen
 		
 	if Globals.player_node: #if there is a player (to avoid crashing)
 		Globals.add_items(item) #add given item to inventory
+		pickup_audio.reparent(get_tree().current_scene)#changes parent to level node so that the sound doesnt cut off
+		pickup_audio.play()
 		self.queue_free() #removes the item node after done loading all the data
 		
 	
@@ -64,3 +65,6 @@ func initiate_items(type, name, effect, texture):# used in rubbish_pile_tile scr
 	item_name = name
 	item_effect = effect
 	item_texture = texture
+
+func scale_up(): #used in rubbish sort, to scle up the items when the scene is visible
+	scale = Vector2(50, 50)

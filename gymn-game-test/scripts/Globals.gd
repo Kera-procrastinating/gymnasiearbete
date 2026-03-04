@@ -4,6 +4,7 @@ var rubbish_sort_visible := false
 var player_global_position: Vector2
 var inventory =[]
 var invno := 0 #for objective
+var reached_water = false#for objective
 var spawnable_rubbish_items = [ #used in rubbish_pile_tile scene, spawn_random_items func
 	{"type": "metal", "name": "metal plates", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Metal-Plates.png")},
 	{"type": "wood1", "name": "palet1", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Pallet_1.png")},
@@ -12,7 +13,8 @@ var spawnable_rubbish_items = [ #used in rubbish_pile_tile scene, spawn_random_i
 	{"type": "plastic", "name": "cone", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/road stuff/Traffic-cone.png")},	
 	{"type": "plastic", "name": "cone", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/road stuff/Traffic-cone.png")},
 ]
-var objective_tools = [{"type": "bucket", "name": "empty", "effect": "fill", "texture": preload("res://assets/bits and bobs/objective tools/Bucket2.png")}]
+var objective_tools = [{"type": "bucket", "name": "empty", "effect": "fill", "texture": preload("res://assets/bits and bobs/objective tools/Bucket2.png")},
+	{"type": "bucket", "name": "filled", "effect": "empty", "texture": preload("res://assets/bits and bobs/objective tools/water_bucket.png")}]
 
 signal inventory_updated #whenever an item is added or removed, update the inventory 
 
@@ -106,14 +108,16 @@ func get_drop_position() -> Vector2:
 	
 func get_random_area_within_drop_area():
 	var drop_variables = get_drop_variables() # func below
-	var drop_box: CollisionShape2D = drop_variables[1] #take 2nd info from list
 	var drop_area: Area2D = drop_variables[0] #take 1st info from list
+	var drop_box: CollisionShape2D = drop_variables[1] #take 2nd info from list
 	
-	var area_rect: Rect2 = drop_box.shape.get_rect() #create variable that gets the rectangle of drop_box
-	var x = randf_range(0, area_rect.position.x) # pick a random x from 0 - the position of the x of the rectangle
-	var y = randf_range(0, area_rect.position.y)
+	var shape := drop_box.shape as RectangleShape2D #tells godot to read as a rectangle
+	var extents: Vector2 = shape.extents # takes coordinates, cuts them in half 
+	
+	var x := randf_range(-extents.x, extents.x) #half the coordinates in one direction,
+	var y := randf_range(-extents.y, extents.y) #and half in the other direction - negative
 
-	return drop_area.to_global(Vector2(x,y))	#drop items on randomly generated drop area
+	return drop_area.to_global(Vector2(x, y)) #coordinate for dropped item, global so that they come up on the screen
 
 func get_drop_variables()	:
 	var droparea = rubbishsort_instance.get_node("DropArea") #rubbishsort_instance set as empty node in top of globals

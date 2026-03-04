@@ -300,7 +300,6 @@ height = 11.0
 y_sort_enabled = true
 collision_mask = 254
 script = ExtResource("1_nmlgn")
-speed = 40
 
 [node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
@@ -314,7 +313,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nmlgn")
 
 [node name="InteractUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Panel" type="Panel" parent="InteractUI"]
 self_modulate = Color(1, 1, 1, 0)
@@ -353,6 +351,6 @@ theme_override_fonts/font = ExtResource("4_oydcr")
 theme_override_font_sizes/font_size = 49
 text = "Press \"E\" to pick up"
 
-[node name="FootstepsGrass" type="AudioStreamPlayer2D" parent="."]
+[node name="FootstepsGrass" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_vo512")
-autoplay = true
+volume_db = -9.019

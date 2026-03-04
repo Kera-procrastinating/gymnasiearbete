@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://svecgqh4mdqr" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Tiles/Garbage_TileSet.png" id="1_x5rmk"]
 [ext_resource type="Script" uid="uid://tehlyyvikrbo" path="res://scripts/rubbish_pile_tile.gd" id="2_dy6tp"]
-[ext_resource type="AudioStream" uid="uid://dxdhkgr3dtu3w" path="res://assets/audio/catch ball 14.wav" id="3_ru5yl"]
+[ext_resource type="AudioStream" uid="uid://dxdhkgr3dtu3w" path="res://assets/audio/Digging rubbish.wav" id="3_ru5yl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dy6tp"]
 texture = ExtResource("1_x5rmk")
@@ -80,6 +80,7 @@ tile_map_data = PackedByteArray("AAAQAA0AAAAAAAAAAAAQAA4AAAAAAAEAAAAQAA8AAAAAAAI
 tile_set = SubResource("TileSet_ru5yl")
 script = ExtResource("2_dy6tp")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="RubbishDug" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(300, 300)
 stream = ExtResource("3_ru5yl")
+volume_db = -6.693
