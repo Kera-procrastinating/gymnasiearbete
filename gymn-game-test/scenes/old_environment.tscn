@@ -9,33 +9,36 @@
 [ext_resource type="Texture2D" uid="uid://c5khgyw6y1iw5" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Rust/Car_5_Rust_Tractor/Car_5_Rust_Tractor_Side.png" id="6_h3bj0"]
 [ext_resource type="Texture2D" uid="uid://cg4f86aickrjs" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Rust/Car_8_Rust_Bus/Car_8_Rust_Blue_Bus.png" id="7_3s4jl"]
 
-[node name="OldEnvironment" type="StaticBody2D"]
+[node name="OldEnvironment" type="StaticBody2D" groups=["vehicles"]]
 collision_layer = 16
 script = ExtResource("1_0irb6")
 
-[node name="Car1" type="Sprite2D" parent="."]
+[node name="Car1Collision" type="CollisionPolygon2D" parent="." groups=["vehicles"]]
+polygon = PackedVector2Array(341, 224, 341, 215, 348, 195, 363, 200, 363, 204, 357, 225, 355, 226)
+
+[node name="Area2D" type="Area2D" parent="Car1Collision"]
+
+[node name="Car1Collision" type="CollisionPolygon2D" parent="Car1Collision/Area2D"]
+polygon = PackedVector2Array(345, 184, 332, 216, 336, 226, 358, 231, 367, 204, 367, 193)
+
+[node name="Car1" type="Sprite2D" parent="Car1Collision" groups=["vehicles"]]
 position = Vector2(347, 222)
 texture = ExtResource("1_ctm3k")
 offset = Vector2(3, -14)
 
-[node name="Car1Collision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(341, 224, 341, 215, 348, 195, 363, 200, 363, 204, 357, 225, 355, 226)
+[node name="MinivanCollision" type="CollisionPolygon2D" parent="." groups=["vehicles"]]
+y_sort_enabled = true
+polygon = PackedVector2Array(318, 146, 322, 138, 371, 138, 375, 146, 362, 147, 326, 147)
 
-[node name="Minivan" type="Sprite2D" parent="."]
+[node name="Area2D" type="Area2D" parent="MinivanCollision"]
+
+[node name="MinivanCollision" type="CollisionPolygon2D" parent="MinivanCollision/Area2D"]
+polygon = PackedVector2Array(314, 150, 379, 150, 382, 128, 374, 113, 320, 113, 312, 127)
+
+[node name="Minivan" type="Sprite2D" parent="MinivanCollision" groups=["vehicles"]]
 position = Vector2(345, 146)
 texture = ExtResource("7_3s4jl")
 offset = Vector2(2, -14)
-
-[node name="MinivanCollision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(318, 146, 322, 138, 371, 138, 375, 146, 362, 147, 326, 147)
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="MinivanCollision" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(314, 150, 379, 150, 382, 128, 374, 113, 320, 113, 312, 127)
-
-[node name="Car1Collision" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(345, 184, 332, 216, 336, 226, 358, 231, 367, 204, 367, 193)
 
 [node name="Car2YellowUpsidedown" type="Sprite2D" parent="."]
 position = Vector2(772, 346)
@@ -60,4 +63,5 @@ texture = ExtResource("5_jlg1v")
 position = Vector2(612, 440)
 texture = ExtResource("6_h3bj0")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="MinivanCollision/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="MinivanCollision/Area2D" to="." method="_on_area_2d_body_exited"]

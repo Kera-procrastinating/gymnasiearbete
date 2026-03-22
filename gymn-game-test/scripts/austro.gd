@@ -3,10 +3,11 @@ class_name Astro
 
 @onready var anim: AnimatedSprite2D = $IdleAnimatedSprite2D
 @onready var interact_ui = $InteractUI
-@onready var inventory_ui = get_parent().get_node("CanvasLayer/InventoryGUI")
+@onready var inventory_ui = $Inventory/InventoryGUI
 @onready var inventory_ui_closed = get_parent().get_node("CanvasLayer/InventoryClosed")
 @onready var objective_scene = get_parent().get_node("CanvasLayer/ObjectiveScene")
 @onready var footsteps := $FootstepsGrass
+@onready var inventory_hotbar = $InventoryHotbar/InventoryHotbar
 
 @export var speed := 55 
 enum{IDLE, WALK}
@@ -39,6 +40,10 @@ func _physics_process( delta: float) -> void:
 		_idle_state()
 		
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("pick_up"):
+		var pickup_audio = $PickupAudio
+		pickup_audio.play()
 
 	
 func _idle_state()-> void:
@@ -79,8 +84,39 @@ func _input(event):
 
 func apply_item_effect(item): #items with special effects can effect the character, taken to inverntory slot ui
 	match item["effect"]:
-		"stamina": #applied to apple in spawnable_rubbish_items list in globals, adds to all apples
-			speed += 20
+		"speed": #applied to apple in spawnable_rubbish_items list in globals, adds to all apples
+			speed += 30
+			await get_tree().create_timer(5.0).timeout
+			speed -= 30
+			
 			print("speed increased to ", speed)
 		_:
 			print("There is no effect for this item") #no effect does nothing, maybe add visible box later
+
+
+##next two funcs: if item is in hotbar and has effect,clicking the hotbar keys, uses item
+
+func use_hotbar_item(slot_index): #using hotbar shortcuts, button-1 to use up items
+	if slot_index < Globals.hotbar_inventory.size():
+		var item = Globals.hotbar_inventory[slot_index]
+		if item != null:
+			apply_item_effect(item) #use item effect from hotbar
+			item["quantity"] -= 1
+			if item["quantity"] <= 0:
+				Globals.hotbar_inventory[slot_index] = null
+				Globals.remove_items(item["type"], item["effect"], item["name"])
+			Globals.inventory_updated.emit()
+		
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed:
+		for i in range(Globals.hotbar_size):
+			if Input.is_action_just_pressed("hotbar_" + str(i+1)):
+				use_hotbar_item(i)
+				break
+		
+		
+		
+		
+	
+	
+	

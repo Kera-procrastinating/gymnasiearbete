@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://mrl3ei271dkr"]
+[gd_scene load_steps=10 format=3 uid="uid://mrl3ei271dkr"]
 
 [ext_resource type="Texture2D" uid="uid://c36i4gv86uk6h" path="res://assets/inventory assets/Bin.png" id="1_c82oe"]
 [ext_resource type="Script" uid="uid://bkr833qevjt08" path="res://scripts/rubbish_sort.gd" id="1_q5t8m"]
 [ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="2_qf1w8"]
+[ext_resource type="Texture2D" uid="uid://ccyd74otetykv" path="res://assets/bits and bobs/objective tools/Bar images/empty_bar.png" id="4_roblx"]
+[ext_resource type="AudioStream" uid="uid://c4s8xliyr4mx7" path="res://assets/audio/metal sound.wav" id="5_0vlqm"]
+[ext_resource type="AudioStream" uid="uid://bbc76x7kkj5vi" path="res://assets/audio/glass set down on wood 7.wav" id="6_0vlqm"]
+[ext_resource type="AudioStream" uid="uid://df7fm5fpjmyt5" path="res://assets/audio/plastic device set down on wood 1.wav" id="7_t2kno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roblx"]
-size = Vector2(669.038, 558.497)
+size = Vector2(669.038, 513.494)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q5t8m"]
 radius = 118.998
@@ -17,81 +21,115 @@ script = ExtResource("1_q5t8m")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 2903.0
 offset_bottom = 1555.0
+mouse_filter = 2
 color = Color(0.162224, 0.29736, 0.526793, 1)
 
 [node name="Bins" type="Node2D" parent="."]
 
-[node name="Bin1" type="Sprite2D" parent="Bins"]
+[node name="Metal" type="Node2D" parent="Bins"]
+
+[node name="MetalBin" type="Sprite2D" parent="Bins/Metal"]
 position = Vector2(479.25, 1161.5)
 scale = Vector2(9.375, 11.2429)
 texture = ExtResource("1_c82oe")
 
-[node name="Bin1text" type="Label" parent="Bins/Bin1"]
+[node name="MetalBinText" type="Label" parent="Bins/Metal/MetalBin"]
 offset_left = -21.4667
-offset_top = 16.9441
+offset_top = 15.1651
 offset_right = 250.533
-offset_bottom = 131.944
+offset_bottom = 130.165
 scale = Vector2(0.15, 0.15)
 theme_override_fonts/font = ExtResource("2_qf1w8")
 theme_override_font_sizes/font_size = 100
 text = "Metal"
 
-[node name="Bin2" type="Sprite2D" parent="Bins"]
+[node name="MetalFilledBar" type="Sprite2D" parent="Bins/Metal"]
+position = Vector2(693, 1409)
+rotation = -1.57074
+texture = ExtResource("4_roblx")
+
+[node name="MetalDropSound" type="AudioStreamPlayer2D" parent="Bins/Metal"]
+stream = ExtResource("5_0vlqm")
+
+[node name="Wood" type="Node2D" parent="Bins"]
+
+[node name="WoodBin" type="Sprite2D" parent="Bins/Wood"]
 position = Vector2(1442, 1167)
 scale = Vector2(9.375, 11.2429)
 texture = ExtResource("1_c82oe")
 
-[node name="Label" type="Label" parent="Bins/Bin2"]
-offset_left = -19.4133
-offset_top = 17.0775
-offset_right = 252.587
-offset_bottom = 132.077
+[node name="WoodBinText" type="Label" parent="Bins/Wood/WoodBin"]
+offset_left = -19.3067
+offset_top = 14.6759
+offset_right = 252.694
+offset_bottom = 129.675
 scale = Vector2(0.15, 0.15)
 theme_override_fonts/font = ExtResource("2_qf1w8")
 theme_override_font_sizes/font_size = 100
-text = "Paper"
+text = "Wood"
 
-[node name="Bin3" type="Sprite2D" parent="Bins"]
+[node name="WoodFilledBar" type="Sprite2D" parent="Bins/Wood"]
+position = Vector2(1655, 1412)
+rotation = -1.5708
+texture = ExtResource("4_roblx")
+
+[node name="WoodDropSound" type="AudioStreamPlayer2D" parent="Bins/Wood"]
+stream = ExtResource("6_0vlqm")
+volume_db = 3.607
+
+[node name="Plastic" type="Node2D" parent="Bins"]
+
+[node name="PlasticBin" type="Sprite2D" parent="Bins/Plastic"]
 position = Vector2(2406, 1173)
 scale = Vector2(9.375, 11.2429)
 texture = ExtResource("1_c82oe")
 
-[node name="Label" type="Label" parent="Bins/Bin3"]
-offset_left = -26.4533
-offset_top = 16.5438
-offset_right = 328.547
-offset_bottom = 131.544
+[node name="PlasticBinText" type="Label" parent="Bins/Plastic/PlasticBin"]
+offset_left = -26.3467
+offset_top = 14.3202
+offset_right = 328.654
+offset_bottom = 129.32
 scale = Vector2(0.15, 0.15)
 theme_override_fonts/font = ExtResource("2_qf1w8")
 theme_override_font_sizes/font_size = 100
 text = "Plastic"
+
+[node name="PlasticFilledBar" type="Sprite2D" parent="Bins/Plastic"]
+position = Vector2(2700, 1412)
+rotation = -1.5708
+texture = ExtResource("4_roblx")
+
+[node name="PlasticDropSound" type="AudioStreamPlayer2D" parent="Bins/Plastic"]
+stream = ExtResource("7_t2kno")
+volume_db = 3.607
 
 [node name="DropArea" type="Area2D" parent="."]
 position = Vector2(1100, 500)
 scale = Vector2(2.80988, 1.34396)
 
 [node name="DropBox" type="CollisionShape2D" parent="DropArea"]
-position = Vector2(-6.91414e-06, 2.98972)
+position = Vector2(0, -20.0237)
 scale = Vector2(1, 1.02276)
 shape = SubResource("RectangleShape2D_roblx")
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="MetalArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+[node name="MetalCapsule" type="CollisionShape2D" parent="MetalArea"]
 position = Vector2(490, 1166)
 rotation = -1.57236
 shape = SubResource("CapsuleShape2D_q5t8m")
 
-[node name="Area2D3" type="Area2D" parent="."]
+[node name="WoodArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+[node name="WoodCapsule" type="CollisionShape2D" parent="WoodArea"]
 position = Vector2(1437, 1181)
 rotation = -1.57236
 shape = SubResource("CapsuleShape2D_q5t8m")
 
-[node name="Area2D4" type="Area2D" parent="."]
+[node name="PlasticArea" type="Area2D" parent="."]
+scale = Vector2(1, 1.002)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+[node name="PlasticCapsule" type="CollisionShape2D" parent="PlasticArea"]
 position = Vector2(2403, 1187)
 rotation = -1.57236
 shape = SubResource("CapsuleShape2D_q5t8m")
@@ -99,3 +137,9 @@ shape = SubResource("CapsuleShape2D_q5t8m")
 [node name="Items_sort" type="Node2D" parent="."]
 
 [connection signal="area_entered" from="DropArea" to="." method="_on_drop_area_area_entered"]
+[connection signal="area_entered" from="MetalArea" to="." method="_on_metal_area_area_entered"]
+[connection signal="area_exited" from="MetalArea" to="." method="_on_metal_area_area_exited"]
+[connection signal="area_entered" from="WoodArea" to="." method="_on_wood_area_area_entered"]
+[connection signal="area_exited" from="WoodArea" to="." method="_on_wood_area_area_exited"]
+[connection signal="area_entered" from="PlasticArea" to="." method="_on_plastic_area_area_entered"]
+[connection signal="area_exited" from="PlasticArea" to="." method="_on_plastic_area_area_exited"]

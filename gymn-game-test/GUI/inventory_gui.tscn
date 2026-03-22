@@ -5,36 +5,36 @@
 [ext_resource type="PackedScene" uid="uid://bnp071n0en6ud" path="res://GUI/inventory_slot.tscn" id="2_oog7l"]
 
 [node name="InventoryGUI" type="Control"]
-custom_minimum_size = Vector2(96, 144)
+custom_minimum_size = Vector2(400, 800)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 2192.0
-offset_top = 256.0
-offset_right = 2288.0
-offset_bottom = 400.0
-scale = Vector2(8, 8)
+offset_right = 500.0
+offset_bottom = 800.0
+scale = Vector2(0.996514, 0.998396)
 script = ExtResource("1_ts6uu")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 84.0
-offset_bottom = 135.0
+offset_right = 658.0
+offset_bottom = 1074.0
 texture = ExtResource("1_oog7l")
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -57.5
-offset_right = 34.0
-offset_bottom = 58.5
+anchors_preset = -1
+anchor_left = 0.505617
+anchor_top = 0.522466
+anchor_right = 0.505617
+anchor_bottom = 0.522466
+offset_left = -276.5
+offset_top = -481.0
+offset_right = 276.5
+offset_bottom = 481.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.19849, 1.20192)
 columns = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_oog7l")]
 layout_mode = 2

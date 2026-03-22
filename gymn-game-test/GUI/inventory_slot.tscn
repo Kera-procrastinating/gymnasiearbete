@@ -10,19 +10,21 @@
 
 [node name="Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(20, 20)
-offset_right = 20.0
-offset_bottom = 20.0
+custom_minimum_size = Vector2(150, 150)
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.999148, 1.02318)
 script = ExtResource("1_ph5ee")
 
 [node name="SlotImage" type="Sprite2D" parent="."]
+scale = Vector2(7.49919, 7.499)
 texture = ExtResource("2_ayh3y")
 centered = false
 vframes = 2
 
 [node name="ItemIcon" type="Sprite2D" parent="SlotImage"]
-position = Vector2(9.5, 12.5)
-scale = Vector2(0.75, 0.7)
+position = Vector2(9.87614, 12.7724)
+scale = Vector2(0.7, 0.7)
 
 [node name="ItemQuantity" type="Label" parent="SlotImage"]
 self_modulate = Color(0.868985, 0.868985, 0.868985, 1)
@@ -36,7 +38,7 @@ theme_override_font_sizes/font_size = 72
 text = "1"
 
 [node name="ItemButton" type="Button" parent="."]
-self_modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0.380392, 0.411765, 0.87451, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,10 +50,11 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_eps8h")
 [node name="DetailsPanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 3.0
-offset_top = -14.0
-offset_right = 29.0
-offset_bottom = -1.0
+offset_left = 17.0145
+offset_top = -78.1877
+offset_right = 43.0145
+offset_bottom = -65.1877
+scale = Vector2(5.4, 5.4)
 color = Color(0.184278, 0.139659, 0.184273, 1)
 
 [node name="ItemName" type="Label" parent="DetailsPanel"]
@@ -93,10 +96,11 @@ text = "Effect"
 [node name="UsagePanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 3.0
-offset_top = -14.0
-offset_right = 29.0
-offset_bottom = -1.0
+offset_left = 17.0145
+offset_top = -110.44
+offset_right = 43.0145
+offset_bottom = -91.4402
+scale = Vector2(5.4, 5.4)
 color = Color(0.184314, 0.141176, 0.184314, 1)
 
 [node name="UseButton" type="Button" parent="UsagePanel"]
@@ -113,16 +117,28 @@ text = "use"
 [node name="DropButton" type="Button" parent="UsagePanel"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 7.0
+offset_top = 13.0
 offset_right = 801.0
-offset_bottom = 173.0
+offset_bottom = 179.0
 scale = Vector2(0.03, 0.03)
 theme_override_fonts/font = ExtResource("4_dwi7x")
 theme_override_font_sizes/font_size = 120
 text = "Drop"
 
+[node name="AssignButton" type="Button" parent="UsagePanel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 801.0
+offset_bottom = 174.0
+scale = Vector2(0.03, 0.03)
+theme_override_fonts/font = ExtResource("4_dwi7x")
+theme_override_font_sizes/font_size = 120
+text = "Assign"
+
+[connection signal="gui_input" from="ItemButton" to="." method="_on_item_button_gui_input"]
 [connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]
 [connection signal="mouse_exited" from="ItemButton" to="." method="_on_item_button_mouse_exited"]
-[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]
 [connection signal="pressed" from="UsagePanel/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="pressed" from="UsagePanel/DropButton" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="UsagePanel/AssignButton" to="." method="_on_assign_button_pressed"]

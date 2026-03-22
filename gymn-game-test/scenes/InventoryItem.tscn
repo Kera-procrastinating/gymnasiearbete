@@ -1,12 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://clvggqqfp3vnb"]
 
 [ext_resource type="Script" uid="uid://doexkbme65r4y" path="res://scripts/Inventory_item.gd" id="1_mnl66"]
-[ext_resource type="AudioStream" uid="uid://bjccmo63vkg53" path="res://assets/audio/pick up sound.wav" id="2_mnl66"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cdcin"]
 radius = 6.79192
 
-[node name="InventoryItem" type="Node2D" groups=["Items"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mnl66"]
+radius = 4.61538
+
+[node name="InventoryItem" type="Node2D" groups=["items"]]
 y_sort_enabled = true
 scale = Vector2(0.65, 0.65)
 script = ExtResource("1_mnl66")
@@ -22,9 +24,15 @@ shape = SubResource("CircleShape2D_cdcin")
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 
-[node name="PickupAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_mnl66")
-volume_db = -6.684
+[node name="RubbishSortItemArea" type="Area2D" parent="." groups=["items"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RubbishSortItemArea"]
+scale = Vector2(1, 0.992161)
+shape = SubResource("CircleShape2D_mnl66")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="RubbishSortItemArea" to="." method="_on_rubbish_sort_item_area_mouse_entered"]
+[connection signal="mouse_exited" from="RubbishSortItemArea" to="." method="_on_rubbish_sort_item_area_mouse_exited"]
