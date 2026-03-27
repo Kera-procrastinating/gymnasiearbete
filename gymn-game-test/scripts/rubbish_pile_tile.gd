@@ -6,6 +6,8 @@ const DIG_TIME := 0.75 #takes 0.75 seconds to mine
 
 var dig_progress := 0.0 #counts up w delta
 
+var already_picked_up = false #is the waterbucket being picked up for the first time
+
 #@onready var items = $Items
 @onready var items_node = get_parent().get_parent().get_parent().get_node("Items")
 @onready var sort_items_node = get_parent().get_parent().get_parent().get_node("CanvasLayer/RubbishSort/Items_sort")
@@ -58,8 +60,11 @@ func spawn_objective_tool_data(data, position):#takes data, position always info
 	var item_scene = preload("res://scenes/InventoryItem.tscn")
 	var item_instance = item_scene.instantiate()
 	item_instance.initiate_items(data["type"], data["name"], data["effect"], data["texture"]) # gives to/takes from inventory item
-	if data["name"] == "empty": #if is empty bucket, spawn at spaceship ###relates to inventory slot ui, on_use_button_pressed
+	if data["name"] == "empty" and already_picked_up: #if using water from bucket
+		item_instance.global_position = Globals.player_global_position + Vector2(4,1)
+	elif data["name"] == "empty" and not already_picked_up: #if is empty bucket, spawn at spaceship ###relates to inventory slot ui, on_use_button_pressed
 		item_instance.global_position = Vector2(343,305)
+		already_picked_up = true
 	elif data["name"] == "filled" and Globals.reached_water == true: #if filled bucket, spawn at players feet
 		item_instance.global_position = Globals.player_global_position + Vector2(0,1)
 	else:

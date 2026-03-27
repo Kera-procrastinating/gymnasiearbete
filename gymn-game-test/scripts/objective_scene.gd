@@ -9,7 +9,6 @@ var objective = 1
 var objective_1_complete = false #_process will make bucket spawn in 60 fps making hundreds of buckets
 #globals invo(objects collected) stays true and buckets spawn in . but creating a variable and then changing it, it only runs once
 
-
 func _process(delta: float) -> void:
 	if objective == 1 and not objective_1_complete:
 		objects_collected()
@@ -19,13 +18,13 @@ func _process(delta: float) -> void:
 	elif objective == 3:
 		fill_bucket()
 	elif objective == 4:
-		label.text = "click 'l' to sort 10 plastic"
+		label.text = "click 'l' to sort 10 metal"
 		plastic_sorted()
 		
 
 func update_objective_bar():
 	Globals.objectives_completed += 1
-	Globals.objectives_completed = clamp(Globals.objectives_completed, 0, Globals.objective_bar_list.size() - 1)
+	Globals.objectives_completed = clamp(Globals.objectives_completed, 0, Globals.objective_bar_list.size()-1)
 	objective_bar_sprite.texture = Globals.objective_bar_list[Globals.objectives_completed]
 	$PickupSound.play()
 	
@@ -37,6 +36,8 @@ func objects_collected(): ####1
 		
 		rubbish_pile_tile_scene.spawn_objective_tools(0) #bucket spawns by the spaceship
 		update_objective_bar()
+
+		
 		
 		label.text = "reward at spaceship"
 		await get_tree().create_timer(5.0).timeout

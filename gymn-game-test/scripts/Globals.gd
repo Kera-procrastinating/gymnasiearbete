@@ -13,7 +13,8 @@ var spawnable_rubbish_items = [ #used in rubbish_pile_tile scene, spawn_random_i
 	{"type": "wood", "name": "palet2", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Pallet_2.png")},
 	{"type": "plastic", "name": "cone", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/road stuff/Traffic-cone.png")},	
 	{"type": "plastic", "name": "packet", "effect": "", "texture": preload("res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/general rubbish/Chips-pack_Yellow.png")},
-	{"type": "food", "name": "apple", "effect": "speed", "texture": preload("res://assets/bits and bobs/Food/Fruit_apple.png")}
+	{"type": "food", "name": "apple", "effect": "speed", "texture": preload("res://assets/bits and bobs/Food/Fruit_apple.png")}, 
+	{"type": "tree", "name": "seeds", "effect": "plant", "texture": preload("res://assets/bits and bobs/objective tools/seeds.png")}
 ]
 
 var objective_bar_list = [
@@ -25,9 +26,12 @@ var objective_bar_list = [
 ]
 
 var objective_tools = [{"type": "bucket", "name": "empty", "effect": "fill", "texture": preload("res://assets/bits and bobs/objective tools/Bucket2.png")},
-	{"type": "bucket", "name": "filled", "effect": "empty", "texture": preload("res://assets/bits and bobs/objective tools/water_bucket.png")},
-	{"type": "ingot", "name": "metal", "effect": "empty", "texture": preload("res://assets/bits and bobs/objective tools/metal_ingot.png")},
-	{"type": "ingot", "name": "plastic", "effect": "empty", "texture": preload("res://assets/bits and bobs/objective tools/plasic_ingot.png")}]
+	{"type": "bucket", "name": "filled", "effect": "water", "texture": preload("res://assets/bits and bobs/objective tools/water_bucket.png")},
+	{"type": "ingot", "name": "metal", "effect": "", "texture": preload("res://assets/bits and bobs/objective tools/metal_ingot.png")},
+	{"type": "ingot", "name": "plastic", "effect": "", "texture": preload("res://assets/bits and bobs/objective tools/plasic_ingot.png")},
+	{"type": "can", "name": "watering", "effect": "", "texture": preload("res://assets/bits and bobs/objective tools/watering_can.png")}
+	
+	]
 
 signal inventory_updated #whenever an item is added or removed, update the inventory 
 
@@ -50,6 +54,10 @@ var old_items_inside_metal := 0
 var items_in_metal := 0
 var old_items_inside_plastic := 0
 var items_in_plastic := 0
+var seeds_used = false
+var grow_tree = false
+var spawned_tree = false
+var player_in_tree_range = false
 
 var objectives_completed = 0 #objective scene
 
@@ -197,7 +205,6 @@ func swap_inventory_items(index1, index2): #swapping inventory items
 	inventory[index2] = temp
 	inventory_updated.emit()
 	return true
-	
 	
 func swap_hotbar_items(index1, index2): #swapping inventory items
 	if index1 < 0 or index1 > inventory.size() or index2 < 0 or index2 > inventory.size():

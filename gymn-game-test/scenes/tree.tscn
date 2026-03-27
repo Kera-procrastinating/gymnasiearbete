@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://l6g3ummai6bk"]
+
+[ext_resource type="Script" uid="uid://dhe24isybe2r6" path="res://scripts/tree.gd" id="1_avsvi"]
+[ext_resource type="Texture2D" uid="uid://b1mrbkarywg8k" path="res://assets/bits and bobs/nature/tree/smallest tree.png" id="2_vplca"]
+[ext_resource type="Texture2D" uid="uid://dbebaloq4axuw" path="res://assets/bits and bobs/nature/tree/small tree.png" id="3_viusy"]
+[ext_resource type="Texture2D" uid="uid://ncs0yyet163t" path="res://assets/bits and bobs/nature/tree/medium tree.png" id="4_18mvg"]
+[ext_resource type="Texture2D" uid="uid://c3jfcd3t25mbq" path="res://assets/bits and bobs/nature/tree/big tree.png" id="5_dmmp0"]
+[ext_resource type="Texture2D" uid="uid://bc8bdrbld7w7y" path="res://assets/bits and bobs/nature/tree/big plum tree.png" id="6_m26wl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18mvg"]
+radius = 5.99996
+height = 19.9999
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_avsvi"]
+radius = 2.0
+height = 12.0
+
+[node name="Tree" type="Node2D" groups=["trees"]]
+script = ExtResource("1_avsvi")
+
+[node name="SmallestTree" type="Sprite2D" parent="." groups=["trees"]]
+position = Vector2(0, -6)
+texture = ExtResource("2_vplca")
+
+[node name="SmallTree" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -11)
+texture = ExtResource("3_viusy")
+
+[node name="MediumTree" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -18)
+texture = ExtResource("4_18mvg")
+
+[node name="BigTree" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2, -26)
+texture = ExtResource("5_dmmp0")
+
+[node name="BigPlumTree" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2, -26)
+texture = ExtResource("6_m26wl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AreaAroundTree" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+rotation = -1.56693
+shape = SubResource("CapsuleShape2D_18mvg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["trees"]]
+position = Vector2(4.65661e-10, -1)
+rotation = -1.56875
+shape = SubResource("CapsuleShape2D_avsvi")

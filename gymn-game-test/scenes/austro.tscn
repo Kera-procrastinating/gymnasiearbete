@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://d3aun4sr21yqt"]
+[gd_scene load_steps=47 format=3 uid="uid://d3aun4sr21yqt"]
 
 [ext_resource type="Script" uid="uid://bsxwbitpye5e5" path="res://scripts/austro.gd" id="1_nmlgn"]
 [ext_resource type="Texture2D" uid="uid://b34f8eoj7tmhb" path="res://assets/astronaut/idle_austro_frb.png" id="1_np744"]
@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://bhij4mosuo8yr" path="res://assets/audio/footstep grass 1.wav" id="6_vo512"]
 [ext_resource type="AudioStream" uid="uid://bjccmo63vkg53" path="res://assets/audio/pick up sound.wav" id="7_sq1sd"]
 [ext_resource type="PackedScene" uid="uid://244e4yw4qpyn" path="res://scenes/inventory_hotbar.tscn" id="8_p73du"]
-[ext_resource type="PackedScene" uid="uid://sh28cl0ljdqq" path="res://GUI/inventory_gui.tscn" id="9_usfk8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_np744"]
 atlas = ExtResource("1_np744")
@@ -311,11 +310,13 @@ animation = &"walk_down"
 offset = Vector2(0, -6)
 
 [node name="CollisionFeet" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, -0.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nmlgn")
 
 [node name="InteractUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="InteractUI"]
 self_modulate = Color(1, 1, 1, 0)
@@ -359,17 +360,9 @@ stream = ExtResource("6_vo512")
 volume_db = -9.019
 
 [node name="PickupAudio" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("7_sq1sd")
 
 [node name="InventoryHotbar" type="CanvasLayer" parent="."]
 
 [node name="InventoryHotbar" parent="InventoryHotbar" instance=ExtResource("8_p73du")]
-
-[node name="Inventory" type="CanvasLayer" parent="."]
-
-[node name="InventoryGUI" parent="Inventory" instance=ExtResource("9_usfk8")]
-visible = false
-offset_left = 2189.0
-offset_top = 277.0
-offset_right = 2285.0
-offset_bottom = 421.0

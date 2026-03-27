@@ -9,7 +9,8 @@ extends Panel
 @onready var usage_panel = $UsagePanel
 @onready var assign_button = $UsagePanel/AssignButton
 @onready var rubbishsort = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_node("CanvasLayer/RubbishSort")
-@onready var rubbish_pile_tile_scene = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Environment/Rubbish/RubbishPileTile")
+@onready var rubbish_pile_tile_scene = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Environment/Rubbish/RubbishPileTile")
+@onready var rubbish_pile_tile_scene_from_hotbar = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Environment/Rubbish/RubbishPileTile")
 @onready var border_slot = $SlotImage
 						#use this to spawn in filled waterbucket, used in on_use_button_pressed
 var item = null
@@ -62,19 +63,30 @@ func _on_use_button_pressed() -> void:#button on inventory when the inventory sl
 	
 	if item != null and item["effect"] != "" : #omly if the item has an effect
 		if Globals.player_node:
-			if Globals.reached_water: #if by water source
-				Globals.player_node.apply_item_effect(item) #apply effect to player from astro script
-				Globals.remove_items(item["type"], item["effect"], item["name"]) #globals, remove from inventory
-				Globals.remove_hotbar_item(item["type"], item["effect"], item["name"])
+			
+			#specifically if using water bucket
+			if item["effect"] == "fill":  #if empty waterbucket
+				if Globals.reached_water: #if by water source
+					if item in Globals.inventory and item in Globals.hotbar_inventory: #if assigned to hotbar
+						rubbish_pile_tile_scene_from_hotbar.spawn_objective_tools(1)
+						Globals.unassign_hotbar_item(item["type"], item["effect"], item["name"])
+						Globals.remove_items(item["type"], item["effect"], item["name"])
+						#add to hotbar somehow
+					elif item in Globals.inventory and item not in Globals.hotbar_inventory: #if not assigned to hotbar
+						rubbish_pile_tile_scene.spawn_objective_tools(1)#fill with water
+						Globals.remove_items(item["type"], item["effect"], item["name"])
+				else:
+					return
+					#if not by water source
+					
+			if item["effect"] == "water":
+				Globals.player_node.apply_item_effect(item)
+				rubbish_pile_tile_scene.spawn_objective_tools(0)
 				
-				if item["effect"] == "fill": #if empty waterbucket
-					rubbish_pile_tile_scene.spawn_objective_tools(1)#fill with water
-			else:
-				if item["effect"] != "fill":
-					Globals.player_node.apply_item_effect(item)	
-					Globals.remove_items(item["type"], item["effect"], item["name"]) #globals, remove from inventory
-					Globals.remove_hotbar_item(item["type"], item["effect"], item["name"])
-				#alltså, when the bucket cannot be filled with water, do not remove the bucket from inventory
+			#gerneral usage for items that effect player
+			Globals.player_node.apply_item_effect(item)
+			Globals.remove_items(item["type"], item["effect"], item["name"]) #globals, remove from inventory
+			Globals.remove_hotbar_item(item["type"], item["effect"], item["name"])
 		else:
 			print("Player not found") #avoiding crashing
 

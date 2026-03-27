@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://1t1u73pjfla1"]
+[gd_scene load_steps=5 format=3 uid="uid://1t1u73pjfla1"]
 
 [ext_resource type="Script" uid="uid://e0vr571oqc2x" path="res://scripts/old_environment.gd" id="1_0irb6"]
 [ext_resource type="Texture2D" uid="uid://dsfi1oermw0ps" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Normal/Car_2_Upsidedown/Car_2_Gray_Upsidedown.png" id="1_ctm3k"]
-[ext_resource type="Texture2D" uid="uid://diuxccb5dgpo0" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Normal/Car_2_Upsidedown/Car_2_Yellow_Upsidedown.png" id="2_xwbul"]
 [ext_resource type="Texture2D" uid="uid://b84gsxg7jnsub" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Normal/Car_7_Truck/Car_7_Red_Truck.png" id="3_1feiu"]
-[ext_resource type="Texture2D" uid="uid://cgcup8t1jua44" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Overgrown/Car_7_Overgrown_Truck/Dark-Green/Car_7_Overgrown_Dark-Green_Green_Truck.png" id="4_t3rht"]
-[ext_resource type="Texture2D" uid="uid://bpps5b6ab2b8d" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Overgrown/Car_1_Overgrown/Green/Car_1_Overgrown_Green_Gray.png" id="5_jlg1v"]
-[ext_resource type="Texture2D" uid="uid://c5khgyw6y1iw5" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Rust/Car_5_Rust_Tractor/Car_5_Rust_Tractor_Side.png" id="6_h3bj0"]
 [ext_resource type="Texture2D" uid="uid://cg4f86aickrjs" path="res://assets/bits and bobs/PostApocalypse_AssetPack_v1/Objects/Vehicles/Rust/Car_8_Rust_Bus/Car_8_Rust_Blue_Bus.png" id="7_3s4jl"]
 
 [node name="OldEnvironment" type="StaticBody2D" groups=["vehicles"]]
@@ -28,6 +24,7 @@ offset = Vector2(3, -14)
 
 [node name="MinivanCollision" type="CollisionPolygon2D" parent="." groups=["vehicles"]]
 y_sort_enabled = true
+position = Vector2(-22, 9)
 polygon = PackedVector2Array(318, 146, 322, 138, 371, 138, 375, 146, 362, 147, 326, 147)
 
 [node name="Area2D" type="Area2D" parent="MinivanCollision"]
@@ -40,28 +37,9 @@ position = Vector2(345, 146)
 texture = ExtResource("7_3s4jl")
 offset = Vector2(2, -14)
 
-[node name="Car2YellowUpsidedown" type="Sprite2D" parent="."]
-position = Vector2(772, 346)
-rotation = 1.2241
-texture = ExtResource("2_xwbul")
-
 [node name="Car7RedTruck" type="Sprite2D" parent="."]
-position = Vector2(538, 123)
+position = Vector2(544, 137)
 texture = ExtResource("3_1feiu")
-
-[node name="Car7OvergrownDark-greenGreenTruck" type="Sprite2D" parent="."]
-position = Vector2(211, 423)
-texture = ExtResource("4_t3rht")
-flip_h = true
-
-[node name="Car1OvergrownGreenGray" type="Sprite2D" parent="."]
-position = Vector2(333, 393)
-rotation = 0.370352
-texture = ExtResource("5_jlg1v")
-
-[node name="Car5RustTractorSide" type="Sprite2D" parent="."]
-position = Vector2(612, 440)
-texture = ExtResource("6_h3bj0")
 
 [connection signal="body_entered" from="MinivanCollision/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="MinivanCollision/Area2D" to="." method="_on_area_2d_body_exited"]
