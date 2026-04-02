@@ -44,26 +44,51 @@ func _process(delta: float) -> void:
 	
 	if Globals.grow_tree:
 		if Input.is_action_just_pressed("right_click"):
-			if Globals.spawned_tree == true:
-				var char_pos = Globals.player_global_position
-				var tile_pos: Vector2i = soil_tile.local_to_map(soil_tile.to_local(char_pos))
-				var tile_data = soil_tile.get_cell_tile_data(tile_pos)
-				
+			var char_pos = Globals.player_global_position
+			var tile_pos: Vector2i = soil_tile.local_to_map(soil_tile.to_local(char_pos))
+			var tile_data = soil_tile.get_cell_tile_data(tile_pos)
+			
+			if Globals.spawned_tree == false:
 				if tile_data != null:
-					spawn_tree_at_tile(tile_pos)
+					var tree = spawn_tree_at_tile(tile_pos)
 					soil_tile.erase_cell(tile_pos)
 					
-				Globals.grow_tree = false
-			#else:
-				#if Globals.player_in_tree_range:
-					#pass # find correct tree, tree.grow() (func from tree scene)
+					Globals.grow_tree = false
+					Globals.spawned_tree = true
+					
+			elif Globals.spawned_tree == true:
+				var tree_area = get_area_at_position(char_pos)
+				
+				if tree_area and tree_area.get_parent().has_method("grow"):
+					var tree = tree_area.get_parent()
+					tree.grow()
 
+
+func get_area_at_position(pos: Vector2) -> Area2D:
+	
+	var space_state = get_world_2d().direct_space_state #get the world
+
+	var query = PhysicsPointQueryParameters2D.new() #make godot check for areas constantly
+	query.position = pos #check at the position of the player
+	query.collide_with_areas = true #check if character in area
+	query.collide_with_bodies = false #dont check i character in bodies
+	
+	var results = space_state.intersect_point(query) #if there is an area that the player collides in
+	
+	for hit in results:
+		if hit.collider is Area2D:
+			return hit.collider #alltså get back a dict of the areas information
+	
+	return null
 
 func spawn_tree_at_tile(tile_pos: Vector2i):
 	var tree = tree_scene.instantiate()
 	var world_pos = rubbish_pile_tile.map_to_local(tile_pos)
 	tree.global_position = world_pos
+	
 	add_child(tree)
+	
+	return tree
 
 func update_ground():
 	if Globals.objectives_completed == 0:

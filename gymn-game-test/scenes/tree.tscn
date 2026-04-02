@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bc8bdrbld7w7y" path="res://assets/bits and bobs/nature/tree/big plum tree.png" id="6_m26wl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18mvg"]
-radius = 5.99996
-height = 19.9999
+radius = 4.99996
+height = 15.9612
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_avsvi"]
 radius = 2.0
@@ -45,7 +45,7 @@ texture = ExtResource("6_m26wl")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="AreaAroundTree" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
+position = Vector2(0, -1)
 rotation = -1.56693
 shape = SubResource("CapsuleShape2D_18mvg")
 

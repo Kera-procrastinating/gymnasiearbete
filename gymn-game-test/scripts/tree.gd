@@ -18,7 +18,7 @@ func update_visual():
 	stage2.visible = stage == 2
 	stage3.visible = stage == 3
 	stage4.visible = stage == 4
-	stage5.visible = stage == 5
+	stage5.visible = stage >= 5
 
 
 func _on_body_entered(body: Astro) -> void:
