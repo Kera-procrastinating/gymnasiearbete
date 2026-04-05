@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh03j34lyl8g7"]
+
+[ext_resource type="Script" uid="uid://banjxyioi5irt" path="res://scripts/you_win.gd" id="1_rlycu"]
+[ext_resource type="Texture2D" uid="uid://3v4k0apdxxx" path="res://assets/background/simple_natural_landscape_free_pixel_art_background.png" id="1_vkac0"]
+[ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="1_w5032"]
+
+[node name="YouWin" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rlycu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vkac0")
+expand_mode = 1
+stretch_mode = 6
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -458.0
+offset_top = -400.0
+offset_right = 458.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.187449, 1.68458e-07, 1)
+theme_override_fonts/font = ExtResource("1_w5032")
+theme_override_font_sizes/font_size = 250
+text = "world saved"
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -4.0
+offset_right = 250.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.188235, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.666667, 0, 1)
+theme_override_fonts/font = ExtResource("1_w5032")
+theme_override_font_sizes/font_size = 80
+text = "Continue"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 140.0
+offset_right = 250.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.188235, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.901771, 5.99228e-06, 8.66354e-07, 1)
+theme_override_fonts/font = ExtResource("1_w5032")
+theme_override_font_sizes/font_size = 80
+text = "Quit"
+
+[node name="NewGameButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 280.0
+offset_right = 250.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.188235, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.831373, 0, 1)
+theme_override_fonts/font = ExtResource("1_w5032")
+theme_override_font_sizes/font_size = 80
+text = "new game"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="NewGameButton" to="." method="_on_new_game_button_pressed"]

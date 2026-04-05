@@ -12,6 +12,7 @@ extends Panel
 @onready var rubbish_pile_tile_scene = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Environment/Rubbish/RubbishPileTile")
 @onready var rubbish_pile_tile_scene_from_hotbar = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Environment/Rubbish/RubbishPileTile")
 @onready var border_slot = $SlotImage
+@onready var splash_sound = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("MusicAndEffects/WaterSplashSound")
 						#use this to spawn in filled waterbucket, used in on_use_button_pressed
 var item = null
 var drop_position
@@ -67,6 +68,7 @@ func _on_use_button_pressed() -> void:#button on inventory when the inventory sl
 			#specifically if using water bucket
 			if item["effect"] == "fill":  #if empty waterbucket
 				if Globals.reached_water: #if by water source
+					splash_sound.play()
 					if item in Globals.inventory and item in Globals.hotbar_inventory: #if assigned to hotbar
 						rubbish_pile_tile_scene_from_hotbar.spawn_objective_tools(1)
 						Globals.unassign_hotbar_item(item["type"], item["effect"], item["name"])

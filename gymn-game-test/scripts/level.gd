@@ -10,6 +10,10 @@ extends Node2D
 @onready var soil_tile = $LargeFlatArea/SoilTile
 @onready var Trees = $Trees
 @onready var rubbish_pile_tile = get_node("Environment/Rubbish/RubbishPileTile")
+@onready var you_win_scene = $CanvasLayer/YouWin
+@onready var water_splash = $MusicAndEffects/WaterSplashSound
+@onready var bg_music = $CanvasLayer/MusicUI/BgMusic
+@onready var won_music = $MusicAndEffects/WonMusic
 
 var tree_scene = preload("res://scenes/tree.tscn")
 
@@ -31,6 +35,12 @@ func _process(delta: float) -> void:
 		rubbishsorting.visible = !rubbishsorting.visible 
 		Globals.rubbish_sort_visible = !Globals.rubbish_sort_visible #variable to be able to drop items, in the global code
 	
+	if Globals.trees_fully_grown == 5 and Globals.no_tiles and not Globals.has_won:
+		Globals.has_won = true
+		you_win_scene.visible = true
+		bg_music.stop()
+		won_music.play()
+		
 	update_ground()
 	#Globals.objectives_completed > 2 and 
 	if Globals.seeds_used:
@@ -44,25 +54,24 @@ func _process(delta: float) -> void:
 	
 	if Globals.grow_tree:
 		if Input.is_action_just_pressed("right_click"):
+			water_splash.play()
 			var char_pos = Globals.player_global_position
-			var tile_pos: Vector2i = soil_tile.local_to_map(soil_tile.to_local(char_pos))
-			var tile_data = soil_tile.get_cell_tile_data(tile_pos)
+			var tree_area = get_area_at_position(char_pos)
+		
+			if tree_area: #is my player interacting with an area2D
+				if tree_area and tree_area.get_parent().has_method("grow"): #if that area is a tree
+					var tree = tree_area.get_parent() #get the areas parent (node)
+					tree.grow() #update tree sprite
+			else: #if there is not already a tree there
+				var tile_pos: Vector2i = soil_tile.local_to_map(soil_tile.to_local(char_pos)) #if player is on soil tile
+				var tile_data = soil_tile.get_cell_tile_data(tile_pos)#get the data of that tile
 			
-			if Globals.spawned_tree == false:
-				if tile_data != null:
-					var tree = spawn_tree_at_tile(tile_pos)
-					soil_tile.erase_cell(tile_pos)
-					
-					Globals.grow_tree = false
-					Globals.spawned_tree = true
-					
-			elif Globals.spawned_tree == true:
-				var tree_area = get_area_at_position(char_pos)
+				if tile_data != null: #if there is soil there
+					var tree = spawn_tree_at_tile(tile_pos) #grow sapling(smallest tree)
+					soil_tile.erase_cell(tile_pos) #remove soil tile
 				
-				if tree_area and tree_area.get_parent().has_method("grow"):
-					var tree = tree_area.get_parent()
-					tree.grow()
-
+					Globals.grow_tree = false
+				
 
 func get_area_at_position(pos: Vector2) -> Area2D:
 	

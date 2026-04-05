@@ -59,6 +59,11 @@ var grow_tree = false
 var spawned_tree = false
 var player_in_tree_range = false
 
+#winning factors
+var trees_fully_grown = 0
+var no_tiles = false
+var has_won = false
+
 var objectives_completed = 0 #objective scene
 
 #hotbar

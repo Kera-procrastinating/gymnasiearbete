@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://sh28cl0ljdqq"]
+[gd_scene load_steps=5 format=3 uid="uid://sh28cl0ljdqq"]
 
 [ext_resource type="Texture2D" uid="uid://d3oru7xjfmkbv" path="res://assets/inventory assets/inv_rect (kopia 2).png" id="1_oog7l"]
 [ext_resource type="Script" uid="uid://ccj6tnbqnreu7" path="res://scripts/inventory_UI.gd" id="1_ts6uu"]
 [ext_resource type="PackedScene" uid="uid://bnp071n0en6ud" path="res://GUI/inventory_slot.tscn" id="2_oog7l"]
+[ext_resource type="Texture2D" uid="uid://lvinvwstxlkj" path="res://assets/inventory assets/press_button_ui.png" id="4_qygy4"]
 
 [node name="InventoryGUI" type="Control"]
 custom_minimum_size = Vector2(400, 800)
@@ -88,3 +89,11 @@ layout_mode = 2
 
 [node name="Slot15" parent="NinePatchRect/GridContainer" instance=ExtResource("2_oog7l")]
 layout_mode = 2
+
+[node name="InvClosed" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(594.071, 513.824)
+rotation = -1.5708
+scale = Vector2(4, 4)
+texture = ExtResource("4_qygy4")
+flip_h = true

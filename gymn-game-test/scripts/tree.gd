@@ -19,6 +19,9 @@ func update_visual():
 	stage3.visible = stage == 3
 	stage4.visible = stage == 4
 	stage5.visible = stage >= 5
+	
+	if stage >= 5:
+		Globals.trees_fully_grown += 1
 
 
 func _on_body_entered(body: Astro) -> void:

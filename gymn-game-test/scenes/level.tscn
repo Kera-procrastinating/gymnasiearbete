@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://b81u7vg845jjk"]
+[gd_scene load_steps=32 format=4 uid="uid://b81u7vg845jjk"]
 
 [ext_resource type="Script" uid="uid://bpbddp6n38bk4" path="res://scripts/level.gd" id="1_8c41q"]
 [ext_resource type="Texture2D" uid="uid://cfnm1qkmgmj17" path="res://assets/tiles/water.png" id="1_ppgk2"]
@@ -13,11 +13,14 @@
 [ext_resource type="AudioStream" uid="uid://bxxxjxeyf5fa6" path="res://assets/audio/Pause.wav" id="11_arp2o"]
 [ext_resource type="PackedScene" uid="uid://dtbt2ikxjuq5a" path="res://scenes/Start.tscn" id="11_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://umm8lti6ouri" path="res://scenes/music_ui.tscn" id="11_ux5qa"]
+[ext_resource type="AudioStream" uid="uid://baaaxor57q7n7" path="res://assets/audio/water splashing 11.wav" id="12_8gofh"]
 [ext_resource type="PackedScene" uid="uid://qghl03vgfk8j" path="res://scenes/pause.tscn" id="12_8iemx"]
 [ext_resource type="PackedScene" uid="uid://mrl3ei271dkr" path="res://scenes/rubbish_sort.tscn" id="12_fpun6"]
 [ext_resource type="PackedScene" uid="uid://co7ew3g8ayut2" path="res://scenes/objective_scene.tscn" id="13_64w2a"]
-[ext_resource type="Texture2D" uid="uid://lvinvwstxlkj" path="res://assets/inventory assets/press_button_ui.png" id="17_ux5qa"]
+[ext_resource type="AudioStream" uid="uid://del132ghcfkb" path="res://assets/audio/Quircky Shop.wav" id="13_h6wmr"]
 [ext_resource type="PackedScene" uid="uid://sh28cl0ljdqq" path="res://GUI/inventory_gui.tscn" id="18_82cfe"]
+[ext_resource type="PackedScene" uid="uid://dh03j34lyl8g7" path="res://scenes/you_win.tscn" id="19_8gofh"]
+[ext_resource type="PackedScene" uid="uid://bfmqms71suepu" path="res://scenes/crafting.tscn" id="19_gunhw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ainy"]
 texture = ExtResource("1_ppgk2")
@@ -458,6 +461,14 @@ position_smoothing_enabled = true
 [node name="PauseSound" type="AudioStreamPlayer2D" parent="MusicAndEffects"]
 stream = ExtResource("11_arp2o")
 
+[node name="WaterSplashSound" type="AudioStreamPlayer2D" parent="MusicAndEffects"]
+stream = ExtResource("12_8gofh")
+volume_db = -5.46
+
+[node name="WonMusic" type="AudioStreamPlayer2D" parent="MusicAndEffects"]
+stream = ExtResource("13_h6wmr")
+volume_db = -8.416
+
 [node name="Items" type="Node2D" parent="."]
 y_sort_enabled = true
 scale = Vector2(1.00281, 1.00194)
@@ -474,11 +485,14 @@ y_sort_enabled = true
 [node name="RubbishSort" parent="CanvasLayer" instance=ExtResource("12_fpun6")]
 visible = false
 
-[node name="InventoryClosed" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(2798, 799)
-rotation = -1.5708
-scale = Vector2(4, 4)
-texture = ExtResource("17_ux5qa")
+[node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("18_82cfe")]
+
+[node name="CraftingGUI" parent="CanvasLayer" instance=ExtResource("19_gunhw")]
+visible = false
+offset_left = -1042.0
+offset_top = -422.0
+offset_right = -594.0
+offset_bottom = 378.0
 
 [node name="PauseUI" parent="CanvasLayer" instance=ExtResource("12_8iemx")]
 visible = false
@@ -486,4 +500,4 @@ visible = false
 [node name="StartUI" parent="CanvasLayer" instance=ExtResource("11_t1rx8")]
 visible = false
 
-[node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("18_82cfe")]
+[node name="YouWin" parent="CanvasLayer" instance=ExtResource("19_8gofh")]

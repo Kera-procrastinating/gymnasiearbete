@@ -3,13 +3,15 @@ class_name Astro
 
 @onready var anim: AnimatedSprite2D = $IdleAnimatedSprite2D
 @onready var interact_ui = $InteractUI
-@onready var inventory_ui = get_parent().get_node("CanvasLayer/InventoryGUI")
-@onready var inventory_ui_closed = get_parent().get_node("CanvasLayer/InventoryClosed")
+@onready var inventory_ui = get_parent().get_node("CanvasLayer/InventoryGUI/NinePatchRect")
+@onready var inventory_ui_closed = get_parent().get_node("CanvasLayer/InventoryGUI/InvClosed")
 @onready var objective_scene = get_parent().get_node("CanvasLayer/ObjectiveScene")
 @onready var footsteps := $FootstepsGrass
 @onready var inventory_hotbar = $InventoryHotbar/InventoryHotbar
 @onready var level = get_parent()
 @onready var rubbish_pile_tile = get_parent().get_node("Environment/Rubbish/RubbishPileTile")
+@onready var water_sound = get_parent().get_node("MusicAndEffects/WaterSplashSound")
+@onready var won_scene = get_parent().get_node("CanvasLayer/YouWin")
 
 @export var speed := 55 
 enum{IDLE, WALK}
@@ -46,6 +48,10 @@ func _physics_process( delta: float) -> void:
 	if Input.is_action_just_pressed("pick_up"):
 		var pickup_audio = $PickupAudio
 		pickup_audio.play()
+		
+	if won_scene.visible:
+		position = Vector2(343,288)
+
 
 	
 func _idle_state()-> void:
@@ -88,13 +94,13 @@ func apply_item_effect(item): #items with special effects can effect the charact
 	match item["effect"]:
 		"speed": #applied to apple in spawnable_rubbish_items list in globals, adds to all apples
 			speed += 30
-			await get_tree().create_timer(6.0).timeout
+			await get_tree().create_timer(7.0).timeout
 			speed -= 30
 			print("speed increased to ", speed)
 		"plant":
 			Globals.seeds_used = true #used in level scene to plant as a tile
 		"water":
-			Globals.grow_tree = true
+			Globals.grow_tree = true #used in level scene to grow soil to sapling and grow tree
 			
 		_:
 			print("There is no effect for this item") #no effect does nothing, maybe add visible box later

@@ -1,7 +1,7 @@
 extends TileMapLayer
 class_name rubbish_scene
 
-const DIGGING_RANGE := 15 #a range around the character can only be mined there
+const DIGGING_RANGE := 15 #a range around the character can only be mined there 
 const DIG_TIME := 0.75 #takes 0.75 seconds to mine
 
 var dig_progress := 0.0 #counts up w delta
@@ -34,6 +34,9 @@ func finish_dig():#physics_process
 	spawn_random_items(4) #lower in script
 	dig_progress = 0.0 #reset digging time
 	$"../RubbishDug".play()
+	
+	if is_layer_empty():
+		Globals.no_tiles = true
 		
 func cancel_dig():#physics_process
 	dig_progress = 0.0
@@ -79,4 +82,6 @@ func current_tile_data():#physics_process, checking is there is still a tile in 
 	return tile_data
 
 	
+func is_layer_empty() -> bool:
+	return get_used_cells().is_empty()
 	
