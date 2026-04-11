@@ -21,7 +21,7 @@ offset_bottom = 219.0
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qut15")
-volume_db = -12.07
+volume_db = -16.0
 autoplay = true
 parameters/looping = true
 

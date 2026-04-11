@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 			var char_pos = Globals.player_global_position
 			var tree_area = get_area_at_position(char_pos)
 		
-			if tree_area: #is my player interacting with an area2D
+			if tree_area: #is my player interacting with an area2D, works for any type of tree
 				if tree_area and tree_area.get_parent().has_method("grow"): #if that area is a tree
 					var tree = tree_area.get_parent() #get the areas parent (node)
 					tree.grow() #update tree sprite

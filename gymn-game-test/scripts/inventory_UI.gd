@@ -3,11 +3,12 @@ extends Control
 @onready var grid_container = $NinePatchRect/GridContainer
 
 var dragged_slot = null
+var done_won = false
 
 func _ready() -> void:
 	Globals.inventory_updated.connect(_on_inv_updated)
 	_on_inv_updated()
-
+	
 func _on_inv_updated():#signal, every time signal is calles, play code
 	clear_grid_container() # next func 
 	for item in Globals.inventory:

@@ -17,5 +17,4 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
-	get_tree().paused = false
-	get_tree().reload_current_scene()
+	pass

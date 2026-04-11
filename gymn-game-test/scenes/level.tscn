@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b81u7vg845jjk"]
+[gd_scene load_steps=30 format=4 uid="uid://b81u7vg845jjk"]
 
 [ext_resource type="Script" uid="uid://bpbddp6n38bk4" path="res://scripts/level.gd" id="1_8c41q"]
 [ext_resource type="Texture2D" uid="uid://cfnm1qkmgmj17" path="res://assets/tiles/water.png" id="1_ppgk2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d3aun4sr21yqt" path="res://scenes/austro.tscn" id="5_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://be8y5yt6cyek5" path="res://scenes/space_ship.tscn" id="6_klq6b"]
 [ext_resource type="PackedScene" uid="uid://c3xuy7bl6qf0e" path="res://scenes/rubbish.tscn" id="7_8c41q"]
-[ext_resource type="PackedScene" uid="uid://1t1u73pjfla1" path="res://scenes/old_environment.tscn" id="7_b121j"]
 [ext_resource type="Texture2D" uid="uid://1a0lbskoekxg" path="res://assets/tiles/landlandgreen.png" id="9_h6wmr"]
 [ext_resource type="Texture2D" uid="uid://h46cuiny618t" path="res://assets/tiles/waterlandgreen.png" id="10_h6wmr"]
 [ext_resource type="Texture2D" uid="uid://c1qxocef2es35" path="res://assets/tiles/Plants.png" id="10_pqd0y"]
@@ -20,7 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://del132ghcfkb" path="res://assets/audio/Quircky Shop.wav" id="13_h6wmr"]
 [ext_resource type="PackedScene" uid="uid://sh28cl0ljdqq" path="res://GUI/inventory_gui.tscn" id="18_82cfe"]
 [ext_resource type="PackedScene" uid="uid://dh03j34lyl8g7" path="res://scenes/you_win.tscn" id="19_8gofh"]
-[ext_resource type="PackedScene" uid="uid://bfmqms71suepu" path="res://scenes/crafting.tscn" id="19_gunhw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ainy"]
 texture = ExtResource("1_ppgk2")
@@ -445,10 +443,6 @@ y_sort_enabled = true
 [node name="SpaceShip" parent="Environment" instance=ExtResource("6_klq6b")]
 position = Vector2(342, 296)
 
-[node name="OldEnvironment" parent="Environment" instance=ExtResource("7_b121j")]
-y_sort_enabled = true
-position = Vector2(121, 80)
-
 [node name="Player" parent="." instance=ExtResource("5_ppgk2")]
 position = Vector2(343, 290)
 
@@ -487,17 +481,9 @@ visible = false
 
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("18_82cfe")]
 
-[node name="CraftingGUI" parent="CanvasLayer" instance=ExtResource("19_gunhw")]
-visible = false
-offset_left = -1042.0
-offset_top = -422.0
-offset_right = -594.0
-offset_bottom = 378.0
-
 [node name="PauseUI" parent="CanvasLayer" instance=ExtResource("12_8iemx")]
 visible = false
 
 [node name="StartUI" parent="CanvasLayer" instance=ExtResource("11_t1rx8")]
-visible = false
 
 [node name="YouWin" parent="CanvasLayer" instance=ExtResource("19_8gofh")]

@@ -3,7 +3,6 @@ extends Node
 var rubbish_sort_visible := false #inv item scene
 var player_global_position: Vector2
 var inventory =[]
-var invno := 0 #for objective
 var reached_water = false#for objective
 var is_dragging := false# used in inv item, for dragging items in rubbish sort
 var spawnable_rubbish_items = [ #used in rubbish_pile_tile scene, spawn_random_items func
@@ -45,7 +44,8 @@ var player_node : Astro = null #set player as player from player scene
 var rubbishsort_instance: Node = null #used in function get_drop_variable at end of Globals script
 var level_instance: Node = null
 
-var is_inside_wood = false ####rubbish sort
+#rubbish sort
+var is_inside_wood = false
 var is_inside_plastic = false
 var is_inside_metal = false
 var old_items_inside_wood := 0
@@ -54,6 +54,8 @@ var old_items_inside_metal := 0
 var items_in_metal := 0
 var old_items_inside_plastic := 0
 var items_in_plastic := 0
+
+#tree
 var seeds_used = false
 var grow_tree = false
 var spawned_tree = false
@@ -65,6 +67,10 @@ var no_tiles = false
 var has_won = false
 
 var objectives_completed = 0 #objective scene
+var invno := 0 #for objective
+var objective = 1
+var objective_1_complete = false #_process will make bucket spawn in 60 fps making hundreds of buckets
+#globals invo(objects collected) stays true and buckets spawn in . but creating a variable and then changing it, it only runs once
 
 #hotbar
 var hotbar_size = 5
