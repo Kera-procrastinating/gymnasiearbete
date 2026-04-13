@@ -80,11 +80,22 @@ func _on_use_button_pressed() -> void:#button on inventory when the inventory sl
 				else:
 					return
 					#if not by water source
-					
+				
 			if item["effect"] == "water":
 				Globals.player_node.apply_item_effect(item)
 				rubbish_pile_tile_scene.spawn_objective_tools(0)
 				
+			if item["effect"] == "cut":  #if axe
+				if item in Globals.inventory and item in Globals.hotbar_inventory: #if assigned to hotbar
+					rubbish_pile_tile_scene_from_hotbar.spawn_objective_tools(5)
+					Globals.unassign_hotbar_item(item["type"], item["effect"], item["name"])
+					Globals.remove_items(item["type"], item["effect"], item["name"])
+					#add to hotbar somehow
+				elif item in Globals.inventory and item not in Globals.hotbar_inventory: #if not assigned to hotbar
+					rubbish_pile_tile_scene.spawn_objective_tools(5)#respawn axe
+					Globals.remove_items(item["type"], item["effect"], item["name"])
+
+			
 			#gerneral usage for items that effect player
 			Globals.player_node.apply_item_effect(item)
 			Globals.remove_items(item["type"], item["effect"], item["name"]) #globals, remove from inventory

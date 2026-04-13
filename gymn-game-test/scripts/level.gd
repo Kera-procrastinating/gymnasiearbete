@@ -15,7 +15,9 @@ extends Node2D
 @onready var bg_music = $CanvasLayer/MusicUI/BgMusic
 @onready var won_music = $MusicAndEffects/WonMusic
 
+
 var tree_scene = preload("res://scenes/tree.tscn")
+
 
 func _ready() -> void:
 	Globals.level_instance = self
@@ -35,7 +37,7 @@ func _process(delta: float) -> void:
 		rubbishsorting.visible = !rubbishsorting.visible 
 		Globals.rubbish_sort_visible = !Globals.rubbish_sort_visible #variable to be able to drop items, in the global code
 	
-	if Globals.trees_fully_grown == 5 and Globals.no_tiles and not Globals.has_won:
+	if Globals.trees_fully_grown == 3 and Globals.no_tiles and not Globals.has_won:
 		Globals.has_won = true
 		you_win_scene.visible = true
 		bg_music.stop()
@@ -70,8 +72,21 @@ func _process(delta: float) -> void:
 					var tree = spawn_tree_at_tile(tile_pos) #grow sapling(smallest tree)
 					soil_tile.erase_cell(tile_pos) #remove soil tile
 				
-					Globals.grow_tree = false
-				
+				Globals.grow_tree = false
+	
+	if Globals.tree_cut:
+		if Input.is_action_just_pressed("right_click"):
+			var char_pos = Globals.player_global_position
+			var tree_area = get_area_at_position(char_pos)
+			
+			if tree_area: #is my player interacting with an area2D, works for any type of tree
+				if tree_area and tree_area.get_parent().has_method("grow"): #if that area is a tree
+					var tree = tree_area.get_parent() #get the areas parent (node)
+					tree.queue_free()
+					rubbish_pile_tile.spawn_objective_tools(6)#spawn plum
+					rubbish_pile_tile.spawn_objective_tools(6)
+					rubbish_pile_tile.spawn_objective_tools(6)
+				Globals.tree_cut = false
 
 func get_area_at_position(pos: Vector2) -> Area2D:
 	

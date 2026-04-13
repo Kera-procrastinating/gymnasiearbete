@@ -2,7 +2,6 @@ extends TileMapLayer
 class_name rubbish_scene
 
 const DIGGING_RANGE := 15 #a range around the character can only be mined there 
-const DIG_TIME := 0.75 #takes 0.75 seconds to mine
 
 var dig_progress := 0.0 #counts up w delta
 
@@ -17,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	if (Globals.player_global_position.distance_to(get_global_mouse_position())< DIGGING_RANGE): 
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			dig_progress += delta #starts counting up
-			if dig_progress >= DIG_TIME:
+			if dig_progress >= Globals.dig_time:
 				var tile_data = current_tile_data() #func lower in script
 				if tile_data != null:
 					finish_dig() #next func in scipt

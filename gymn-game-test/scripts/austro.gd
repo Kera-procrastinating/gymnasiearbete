@@ -101,7 +101,10 @@ func apply_item_effect(item): #items with special effects can effect the charact
 			Globals.seeds_used = true #used in level scene to plant as a tile
 		"water":
 			Globals.grow_tree = true #used in level scene to grow soil to sapling and grow tree
-			
+		"cut":
+			Globals.tree_cut = true
+		"mining":
+			Globals.dig_time -= 0.2
 		_:
 			print("There is no effect for this item") #no effect does nothing, maybe add visible box later
 

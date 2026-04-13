@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://co7ew3g8ayut2"]
+[gd_scene load_steps=9 format=3 uid="uid://co7ew3g8ayut2"]
 
 [ext_resource type="Script" uid="uid://cdrcdxybhvjpw" path="res://scripts/objective_scene.gd" id="1_22ab8"]
 [ext_resource type="Texture2D" uid="uid://lvinvwstxlkj" path="res://assets/inventory assets/press_button_ui.png" id="1_kw8yg"]
 [ext_resource type="FontFile" uid="uid://bhhxqj70irn7c" path="res://assets/font/AVA.ttf" id="2_8k107"]
 [ext_resource type="Texture2D" uid="uid://ccyd74otetykv" path="res://assets/bits and bobs/objective tools/Bar images/empty_bar.png" id="4_ita62"]
 [ext_resource type="AudioStream" uid="uid://cqu1hexcfcauu" path="res://assets/audio/power_up.wav" id="5_6yoap"]
+[ext_resource type="Texture2D" uid="uid://c0y54sl4yn11f" path="res://assets/inventory assets/inv_circle.png" id="6_exwx8"]
+[ext_resource type="Texture2D" uid="uid://cqkwjjcxmjpm5" path="res://assets/inventory assets/shiny box.png" id="7_4vslb"]
+[ext_resource type="Texture2D" uid="uid://d3oru7xjfmkbv" path="res://assets/inventory assets/inv_rect (kopia 2).png" id="8_e1wex"]
 
 [node name="ObjectiveScene" type="Node2D"]
 script = ExtResource("1_22ab8")
@@ -34,6 +37,7 @@ scale = Vector2(6.32, 6.32)
 texture = ExtResource("4_ita62")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="WaterCollision" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(13.725, -1.13196)
@@ -48,5 +52,129 @@ polygon = PackedVector2Array(512.663, 160.707, 560.205, 159.887, 560.274, 145.35
 stream = ExtResource("5_6yoap")
 volume_db = -6.61
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="InfoImage" type="Sprite2D" parent="Node2D"]
+position = Vector2(648.058, 367.442)
+scale = Vector2(6.5, 6.5)
+texture = ExtResource("6_exwx8")
+
+[node name="InfoButton" type="Button" parent="Node2D/InfoImage"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -93.0
+offset_top = -12.0
+offset_right = -71.0
+offset_bottom = 25.0
+scale = Vector2(1.22651, 0.655012)
+theme_override_fonts/font = ExtResource("2_8k107")
+
+[node name="Label" type="Label" parent="Node2D/InfoImage"]
+offset_left = -84.4588
+offset_top = -9.18888
+offset_right = 28.5412
+offset_bottom = 233.811
+scale = Vector2(0.08, 0.08)
+theme_override_fonts/font = ExtResource("2_8k107")
+theme_override_font_sizes/font_size = 213
+text = "?"
+
+[node name="ObjectiveInfo" type="Node2D" parent="Node2D"]
+visible = false
+
+[node name="Obj1" type="Node2D" parent="Node2D/ObjectiveInfo"]
+
+[node name="BoxObj1" type="Sprite2D" parent="Node2D/ObjectiveInfo/Obj1"]
+position = Vector2(361.728, 842.677)
+scale = Vector2(10.6532, 10.7749)
+texture = ExtResource("7_4vslb")
+
+[node name="ObjText1" type="Label" parent="Node2D/ObjectiveInfo/Obj1"]
+offset_left = 85.9132
+offset_top = 575.204
+offset_right = 888.913
+offset_bottom = 1137.2
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_8k107")
+theme_override_font_sizes/font_size = 96
+text = "stand right up
+to rubbish-
+press and
+hold mouse
+over cube of 
+rubbish"
+
+[node name="Obj2" type="Node2D" parent="Node2D/ObjectiveInfo"]
+visible = false
+
+[node name="BoxObj2" type="Sprite2D" parent="Node2D/ObjectiveInfo/Obj2"]
+position = Vector2(392.487, 799.767)
+scale = Vector2(11.9339, 9.30072)
+texture = ExtResource("7_4vslb")
+
+[node name="ObjText2" type="Label" parent="Node2D/ObjectiveInfo/Obj2"]
+offset_left = 81.3561
+offset_top = 568.331
+offset_right = 884.356
+offset_bottom = 1130.33
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_8k107")
+theme_override_font_sizes/font_size = 96
+text = "stand next to
+water-
+clcik on bucket-
+click on use-
+pick up bucket-"
+
+[node name="Obj3" type="Node2D" parent="Node2D/ObjectiveInfo"]
+visible = false
+
+[node name="BoxObj3" type="Sprite2D" parent="Node2D/ObjectiveInfo/Obj3"]
+visible = false
+position = Vector2(402.967, 986.056)
+scale = Vector2(7.96551, 6.14929)
+texture = ExtResource("8_e1wex")
+
+[node name="ObjText3" type="Label" parent="Node2D/ObjectiveInfo/Obj3"]
+offset_left = 67.572
+offset_top = 535.837
+offset_right = 881.572
+offset_bottom = 1436.84
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_8k107")
+theme_override_font_sizes/font_size = 96
+text = "click use on 
+seeds-
+right click
+on ground-
+stand over 
+plant-
+use waterbucket-
+right click-
+repeat until 
+fruit on tree"
+
+[node name="Obj4" type="Node2D" parent="Node2D/ObjectiveInfo"]
+visible = false
+
+[node name="BoxObj4" type="Sprite2D" parent="Node2D/ObjectiveInfo/Obj4"]
+position = Vector2(370.053, 774.27)
+scale = Vector2(10.7852, 8.69647)
+texture = ExtResource("7_4vslb")
+
+[node name="ObjText4" type="Label" parent="Node2D/ObjectiveInfo/Obj4"]
+offset_left = 88.9942
+offset_top = 538.554
+offset_right = 610.994
+offset_bottom = 874.554
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_8k107")
+theme_override_font_sizes/font_size = 96
+text = "clean all 
+rubbish on
+island-
+Tip: plums help
+mine faster"
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="Node2D/InfoImage/InfoButton" to="." method="_on_info_button_pressed"]
