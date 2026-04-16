@@ -73,6 +73,7 @@ func grow_5_trees():###3
 		
 	
 func remove_all_rubbish():###4
+	label.text = "clean all rubbish"
 	if Globals.no_tiles:
 		update_objective_bar()
 		Globals.objective = 0

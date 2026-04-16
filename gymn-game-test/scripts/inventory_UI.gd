@@ -5,9 +5,6 @@ extends Control
 var dragged_slot = null
 
 func _ready() -> void:
-	load_slots()
-	
-func load_slots():
 	Globals.inventory_updated.connect(_on_inv_updated)
 	_on_inv_updated()
 
@@ -25,7 +22,7 @@ func _on_inv_updated():#signal, every time signal is calles, play code
 			slot.set_empty() #inventory slot, clears texture and label
 
 func clear_grid_container():#when the inventory is to be updates, it clears all the slots so that they can be reset.
-	while grid_container.get_child_count() > 0: #while there are more than 0 (item in the)slots in the grid, until completely empty
+	while grid_container.get_child_count() > 0: #while there are more than 0 (item in the) slots in the grid, until completely empty
 		var child = grid_container.get_child(0) 
 		grid_container.remove_child(child) #remove the slots 
 		child.queue_free()#delete once optimal
@@ -63,3 +60,15 @@ func drop_slot(slot1: Control, slot2: Control):
 	else:
 		Globals.swap_inventory_items(slot1_index, slot2_index)
 		_on_inv_updated()
+
+func clear_inventory():
+	Globals.inventory.clear()
+	Globals.inventory.resize(15)
+	
+	for item in Globals.inventory:
+		var slot = Globals.inventory_slot_scene.instantiate()
+		slot.drag_start.connect(_on_drag_start)
+		
+		slot.drag_end.connect(_on_drag_end)
+		grid_container.add_child(slot)
+		slot.set_empty()

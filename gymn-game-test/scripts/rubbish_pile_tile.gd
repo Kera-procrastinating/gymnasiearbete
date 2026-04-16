@@ -1,7 +1,7 @@
 extends TileMapLayer
 class_name rubbish_scene
 
-const DIGGING_RANGE := 15 #a range around the character can only be mined there 
+const DIGGING_RANGE := 60 #a range around the character can only be mined there 
 
 var dig_progress := 0.0 #counts up w delta
 

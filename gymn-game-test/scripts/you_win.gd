@@ -18,8 +18,18 @@ func _on_continue_button_pressed() -> void:
 
 func _on_new_game_button_pressed() -> void:
 	get_tree().paused = false
-	Globals.inventory.clear()
-	Globals.won = true
-	Globals.reset()
-	inventory_ui.load_slots()
+	
+	inventory_ui.clear_inventory()
+	
+	Globals.trees_fully_grown = 0
+	Globals.no_tiles = false
+
+	Globals.dig_time = 2
+
+	Globals.objectives_completed = 0 
+	Globals.invno = 0 
+	Globals.objective = 1
+	Globals.objective_1_complete = false 
+	
+	
 	get_tree().reload_current_scene()

@@ -86,6 +86,9 @@ func _process(delta: float) -> void:
 					rubbish_pile_tile.spawn_objective_tools(6)#spawn plum
 					rubbish_pile_tile.spawn_objective_tools(6)
 					rubbish_pile_tile.spawn_objective_tools(6)
+					rubbish_pile_tile.spawn_objective_tools(7)
+					rubbish_pile_tile.spawn_objective_tools(7)
+					
 				Globals.tree_cut = false
 
 func get_area_at_position(pos: Vector2) -> Area2D:

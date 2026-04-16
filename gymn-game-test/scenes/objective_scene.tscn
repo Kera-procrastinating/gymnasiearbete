@@ -129,7 +129,6 @@ pick up bucket-"
 visible = false
 
 [node name="BoxObj3" type="Sprite2D" parent="Node2D/ObjectiveInfo/Obj3"]
-visible = false
 position = Vector2(402.967, 986.056)
 scale = Vector2(7.96551, 6.14929)
 texture = ExtResource("8_e1wex")
@@ -144,8 +143,8 @@ theme_override_fonts/font = ExtResource("2_8k107")
 theme_override_font_sizes/font_size = 96
 text = "click use on 
 seeds-
-right click
-on ground-
+right click on 
+ground-
 stand over 
 plant-
 use waterbucket-

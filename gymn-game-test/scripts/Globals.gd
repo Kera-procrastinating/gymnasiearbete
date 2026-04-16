@@ -30,7 +30,8 @@ var objective_tools = [{"type": "bucket", "name": "empty", "effect": "fill", "te
 	{"type": "ingot", "name": "plastic", "effect": "", "texture": preload("res://assets/bits and bobs/objective tools/plasic_ingot.png")},
 	{"type": "can", "name": "watering", "effect": "", "texture": preload("res://assets/bits and bobs/objective tools/watering_can.png")},
 	{"type": "axe", "name": "wooden", "effect": "cut", "texture": preload("res://assets/bits and bobs/objective tools/wood axe.png")},
-	{"type": "fruit", "name": "plum", "effect": "mining", "texture": preload("res://assets/bits and bobs/objective tools/plum.png")}
+	{"type": "fruit", "name": "plum", "effect": "mining", "texture": preload("res://assets/bits and bobs/objective tools/plum.png")},
+	{"type": "tree", "name": "seeds", "effect": "plant", "texture": preload("res://assets/bits and bobs/objective tools/seeds.png")}
 	]
 
 signal inventory_updated #whenever an item is added or removed, update the inventory 
@@ -232,5 +233,4 @@ func swap_hotbar_items(index1, index2): #swapping inventory items
 	return true	
 	
 func reset():
-	if Globals.won == true:
-		inventory_updated.emit()
+	inventory_updated.emit()
