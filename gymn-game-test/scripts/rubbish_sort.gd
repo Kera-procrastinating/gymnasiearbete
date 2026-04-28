@@ -42,12 +42,14 @@ func _process(delta: float) -> void:
 		metal_bar_sprite.texture = bin_bar_list[1]
 		
 	if Globals.items_in_wood > 10:
+		rubbish_pile_tile_inst.spawn_objective_tools(8)
 		Globals.items_in_wood = 1
 		Globals.old_items_inside_wood = 1
 		wood_bar_sprite.texture = bin_bar_list[1]
 		#spawn wood
 		
 	if Globals.items_in_plastic > 10:
+		rubbish_pile_tile_inst.spawn_objective_tools(3)
 		Globals.items_in_plastic = 1
 		Globals.old_items_inside_plastic = 1
 		plastic_bar_sprite.texture = bin_bar_list[1]

@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 		rubbishsorting.visible = !rubbishsorting.visible 
 		Globals.rubbish_sort_visible = !Globals.rubbish_sort_visible #variable to be able to drop items, in the global code
 	
+	#to win the game
 	if Globals.trees_fully_grown == 3 and Globals.no_tiles and not Globals.has_won:
 		Globals.has_won = true
 		you_win_scene.visible = true

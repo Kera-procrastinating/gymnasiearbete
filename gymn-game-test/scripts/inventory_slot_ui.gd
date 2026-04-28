@@ -67,14 +67,14 @@ func _on_use_button_pressed() -> void:#button on inventory when the inventory sl
 			
 			#specifically if using water bucket
 			if item["effect"] == "fill":  #if empty waterbucket
-				if Globals.reached_water: #if by water source
-					splash_sound.play()
+				if Globals.reached_water: #if by water source #SOUND HAS TO MOVE IF INVENTORT
 					if item in Globals.inventory and item in Globals.hotbar_inventory: #if assigned to hotbar
 						rubbish_pile_tile_scene_from_hotbar.spawn_objective_tools(1)
 						Globals.unassign_hotbar_item(item["type"], item["effect"], item["name"])
 						Globals.remove_items(item["type"], item["effect"], item["name"])
 						#add to hotbar somehow
 					elif item in Globals.inventory and item not in Globals.hotbar_inventory: #if not assigned to hotbar
+						splash_sound.play()
 						rubbish_pile_tile_scene.spawn_objective_tools(1)#fill with water
 						Globals.remove_items(item["type"], item["effect"], item["name"])
 				else:
