@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 			var char_pos: Vector2 = Globals.player_global_position
 			var tile_map_pos: Vector2i = soil_tile.local_to_map(char_pos)
 			
-			soil_tile.set_cell(tile_map_pos, 0 ,Vector2(12,24))
+			soil_tile.set_cell(tile_map_pos, 3 ,Vector2(12,24))
 
 			Globals.seeds_used = false
 	
